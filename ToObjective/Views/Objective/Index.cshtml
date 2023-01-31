@@ -3,5 +3,55 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+    <div id="container">
+        <div id="table-header">
+            <button class="table-header-buttons" id="new-objective-button">New</button>
+            <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
+        </div>
+        <div class="table-container">
+            <table id="to-do-table">
+                <thead>
+                    <tr>
+                        <th>Title</th> 
+                        <th>Description</th>
+                        <th>Complete By</th>
+                        <th id="button-column"> Action </th>
+                    </tr>
+                </thead>
+                <tbody id="to-do-table-tbody">
+
+                    <tr>
+                        <td>
+                            Test
+                        </td>
+                        <td>
+                            Temp
+                        </td>
+                        <td>
+                            00/00/0000
+                        </td>
+                        <td>
+                            <button>✔</button>
+                            <button>✖</button>
+                            <button>✎</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="reuseable-modal" class="hide">
+        <div id="modal-content">
+            <div id="modal-header">
+                <h2>Modal <button type="button" id="modal-close-button">✖</button></h2> 
+            </div>
+            <form id="objective-maker-form">
+
+            </form>
+            <button id="modal-cancel-button"> Cancel </button>
+            <button id="modal-submit-button"> Done </button>
+        </div>
+    </div>
 

@@ -2,3 +2,26 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+$(document).ready(function () {
+
+    $("#new-objective-button").on("click", function () {
+        hideShowModal();
+    });
+
+    $("#modal-close-button").on("click", function () {
+        hideShowModal()
+    });
+
+    $("#modal-cancel-button").on("click", function () {
+        hideShowModal()
+    });
+
+    $("#modal-submit-button").on("click", function () {
+        hideShowModal()
+    });
+    
+});
+
+function hideShowModal() {
+    $("#reuseable-modal").toggleClass("hide");
+}
