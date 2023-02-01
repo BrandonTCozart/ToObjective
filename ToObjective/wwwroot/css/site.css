@@ -1,21 +1,9 @@
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 
 body {
     margin: 0px;
+    font-family: sans-serif;
 }
 
 
@@ -26,7 +14,6 @@ body {
     border-width: 1px;
     font-size: min(2vw, 20px);
     color: white;
-    font-family: sans-serif;
 }
 
 #header h2 {
@@ -123,6 +110,26 @@ th {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+form, label, input, textarea {
+    display: block;
+}
+label{
+    margin: 10px 0px 0px 0px;
+}
+
+#description-input-box {
+    height: 100px;
+    width: 225px;
+    resize: none;
+}
+
+#objective-maker-form{
+    margin-left:40px;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+
 #modal-content {
     background-color: #fefefe;
     margin: 10% auto;
@@ -139,7 +146,6 @@ th {
     border-top-right-radius: 5px;
     font-size: 15px;
     color: white;
-    font-family: sans-serif;
 }
 
 #modal-header h2 {

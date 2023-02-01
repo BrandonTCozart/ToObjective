@@ -23,5 +23,6 @@ $(document).ready(function () {
 });
 
 function hideShowModal() {
+    $('#objective-maker-form')[0].reset();
     $("#reuseable-modal").toggleClass("hide");
 }
