@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Objective> // https://learn.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=net-7.0 //
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,16 +19,17 @@
                     </tr>
                 </thead>
                 <tbody id="to-do-table-tbody">
-
+                    @foreach(var obj in Model)
+                    {
                     <tr>
                         <td>
-                            Test
+                            @obj.Title
                         </td>
                         <td>
-                            Temp
+                            @obj.Description
                         </td>
                         <td>
-                            00/00/0000
+                            @obj.CompleteByDate
                         </td>
                         <td>
                             <button>✔</button>
@@ -36,7 +37,7 @@
                             <button>✎</button>
                         </td>
                     </tr>
-
+                    }
                 </tbody>
             </table>
         </div>
