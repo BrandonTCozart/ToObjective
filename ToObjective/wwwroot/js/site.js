@@ -19,7 +19,25 @@ $(document).ready(function () {
     $("#modal-submit-button").on("click", function () {
         hideShowModal()
     });
-    
+
+    $("#new-objective-button").on("click", function () {
+        $.get("/Objective/getIndex", null, function(data) {
+            console.log(data);
+        }); 
+    });
+
+    var object = { title: 'Random', description: 'Randescription', completeByDate: Date() }
+    $.ajax({
+        type: "POST", 
+        url: "/Objective/postIndex",
+        data: object,
+        success: function (data) {
+            console.log(data)
+        },
+        error: function () {
+            console.log("Not Nice")
+        }
+    });
 });
 
 function hideShowModal() {

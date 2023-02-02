@@ -15,19 +15,30 @@ namespace ToObjective.Controllers
         {
             _db = db;
         }
+
+        
         public IActionResult Index()
         {
             IEnumerable<Objective> objectivesList = _db.Objectives;
             return View(objectivesList);
         }
 
-        /*
         [HttpGet]
-        public async Task<IActionResult> GetAllNotes()
+        public IActionResult getIndex()
         {
-            return Ok(await _db.Objectives.ToListAsync());
-        } 
-        */
+            IEnumerable<Objective> objectivesList = _db.Objectives;
+            return Json(objectivesList);
+        }
+
+        [HttpPost]
+        public string postIndex(Objective obj)
+        { 
+            _db.Objectives.Add(obj);
+            return "works";
+        }
+
+        // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/ //
+
 
 
 

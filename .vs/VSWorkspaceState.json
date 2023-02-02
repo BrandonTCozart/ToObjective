@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ToObjective",
+    "\\ToObjective\\Controllers",
+    "\\ToObjective\\Data",
+    "\\ToObjective\\Models",
+    "\\ToObjective\\Views",
+    "\\ToObjective\\Views\\Objective",
+    "\\ToObjective\\wwwroot",
+    "\\ToObjective\\wwwroot\\css",
+    "\\ToObjective\\wwwroot\\js"
+  ],
+  "SelectedNode": "\\ToObjective\\Views\\Objective\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}
