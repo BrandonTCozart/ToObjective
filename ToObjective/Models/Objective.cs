@@ -22,14 +22,5 @@ namespace ToObjective.Models
             Description = description;
             CompleteByDate = completeByDate;
         }
-
-        public bool containsDescription()
-        {
-            if (this.Description == string.Empty)
-            {
-                return false;
-            }
-            return true;
-        }
     }
 }
