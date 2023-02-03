@@ -11,12 +11,13 @@ namespace ToObjective.Models
         public int Id { get; set; } // https://www.youtube.com/watch?v=mydm-jIWwTY //
         public string Title { get; set; }
         public string? Description { get; set; }
-        public DateTime? CompleteByDate { get; set; }
-        public DateTime? CreatedDate { get; set; } = DateTime.Now;
-        public DateTime? UpdatedDate { get; set;} = DateTime.Now;
+        public DateTime CompleteByDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime UpdatedDate { get; set;} = DateTime.Now;
         public DateTime? CompletedDate { get; set; }
 
-        public Objective(string title, string? description, DateTime? completeByDate)
+
+        public Objective(string title, string? description, DateTime completeByDate)
         {
             Title = title;
             Description = description;

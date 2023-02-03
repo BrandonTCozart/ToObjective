@@ -5,7 +5,7 @@
 
     <div id="container">
         <div id="table-header">
-            <button class="table-header-buttons" id="new-objective-button">New</button>
+        <a asp-area="" asp-controller="Objective" asp-action="addNew"> <button class="table-header-buttons" id="new-objective-button">New</button></a>
             <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
         </div>
         <div class="table-container">
@@ -44,23 +44,5 @@
         </div>
     </div>
 
-    <div id="reuseable-modal" class="hide">
-        <div id="modal-content">
-            <div id="modal-header">
-                <h2>Modal <button type="button" id="modal-close-button">✖</button></h2> 
-            </div>
-            <form id="objective-maker-form">
 
-                <label for="title-input-box">Title</label>
-                <input id="title-input-box" type="text" maxlength="40">
-                <label for="description-input-box">Description</label>
-                <textarea name="none" id="description-input-box" cols="30" rows="10" maxlength="1000"></textarea>
-                <label for="doby-input-box">Do By:</label>
-                <input id="doby-input-box" type="date">
-
-            </form>
-            <button id="modal-cancel-button"> Cancel </button>
-            <button id="modal-submit-button"> Done </button>
-        </div>
-    </div>
 

@@ -23,6 +23,11 @@ namespace ToObjective.Controllers
             return View(objectivesList);
         }
 
+        public IActionResult addNew()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult getIndex()
         {
@@ -31,10 +36,11 @@ namespace ToObjective.Controllers
         }
 
         [HttpPost]
-        public string postIndex(Objective obj)
-        { 
+        public JsonResult postIndex(Objective obj)
+        {
             _db.Objectives.Add(obj);
-            return "works";
+            IEnumerable<Objective> objectivesList = _db.Objectives;
+            return Json(objectivesList);
         }
 
         // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/ //

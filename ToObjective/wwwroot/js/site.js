@@ -8,14 +8,6 @@ $(document).ready(function () {
         hideShowModal();
     });
 
-    $("#modal-close-button").on("click", function () {
-        hideShowModal()
-    });
-
-    $("#modal-cancel-button").on("click", function () {
-        hideShowModal()
-    });
-
     $("#modal-submit-button").on("click", function () {
         hideShowModal()
     });
@@ -26,7 +18,23 @@ $(document).ready(function () {
         }); 
     });
 
-    var object = { title: 'Random', description: 'Randescription', completeByDate: Date() }
+    $("#create-button").on("click", function () {
+        var object = { title: $("#title-input-box").val(), description: $("#description-input-box").val(), completeByDate: $("#complete-by-input-box").val() }
+        $.ajax({
+            type: "POST",
+            url: "/Objective/postIndex",
+            data: object,
+            success: function (data) {
+                console.log("Nice")
+            },
+            error: function () {
+                console.log("Not Nice")
+            }
+        });
+    });
+
+    /*
+     var object = { title: 'Random', description: 'Randescription', completeByDate: Date() }
     $.ajax({
         type: "POST", 
         url: "/Objective/postIndex",
@@ -38,9 +46,8 @@ $(document).ready(function () {
             console.log("Not Nice")
         }
     });
+    */
 });
 
 function hideShowModal() {
-    $('#objective-maker-form')[0].reset();
-    $("#reuseable-modal").toggleClass("hide");
 }
