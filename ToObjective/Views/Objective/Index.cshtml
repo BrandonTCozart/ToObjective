@@ -21,7 +21,7 @@
                 <tbody id="to-do-table-tbody">
                 @foreach (var obj in Model)
                     {
-                    <tr>
+                    <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
                         <td>
                             @obj.Title
                         </td>
@@ -32,9 +32,10 @@
                             @obj.CompleteByDate
                         </td>
                         <td>
-                            <button>✔</button>
-                            <button>✖</button>
-                            <button>✎</button>
+                            <button class="complete-button" data-objective-id=@obj.Id>✔</button>
+                            <button class="delete-button" data-objective-id=@obj.Id>✖</button>
+                            <button class="edit-button" data-objective-id=@obj.Id>✎</button>
+                            
                         </td>
                     </tr>
                     }

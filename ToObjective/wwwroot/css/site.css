@@ -115,3 +115,16 @@ th {
     font-weight:bold;
 }
 
+.row-color {
+    background-color: lightgreen;
+}
+
+.complete-button {
+    background-color: green;
+}
+.edit-button {
+
+}
+.delete-button {
+    background-color: red;
+}

@@ -19,11 +19,12 @@ $(document).ready(function () {
     });
 
     $("#create-button").on("click", function () {
-        var object = { title: $("#title-input-box").val(), description: $("#description-input-box").val(), completeByDate: $("#complete-by-input-box").val() }
+        //var object = { title: $("#title-input-box").val(), description: $("#description-input-box").val(), completeByDate: $("#complete-by-input-box").val() }
+        console.log("hello?")
         $.ajax({
             type: "POST",
             url: "/Objective/postIndex",
-            data: object,
+            data: { title: $("#title-input-box").val(), description: $("#description-input-box").val(), completeByDate: $("#complete-by-input-box").val() },
             success: function (data) {
                 console.log("Nice")
             },
@@ -33,20 +34,43 @@ $(document).ready(function () {
         });
     });
 
-    /*
-     var object = { title: 'Random', description: 'Randescription', completeByDate: Date() }
-    $.ajax({
-        type: "POST", 
-        url: "/Objective/postIndex",
-        data: object,
-        success: function (data) {
-            console.log(data)
-        },
-        error: function () {
-            console.log("Not Nice")
-        }
+    $(".delete-button").on("click", function () {
+        let table = document.getElementById("to-do-table");
+        table.deleteRow(this.closest('tr').rowIndex);
+        let objId = this.getAttribute("data-objective-id");
+        $.ajax({
+            type: "DELETE",
+            url: "/Objective/delete",
+            data: {id: parseInt(objId)},
+            success: function (data) {
+                console.log("Nice")
+            },
+            error: function () {
+                console.log("Not Nice")
+            }
+        });
     });
-    */
+
+    $(".complete-button").on("click", function () {
+
+        this.closest('tr').classList.toggle('row-color');
+        this.setAttribute('disabled', true);
+
+        let objId = this.getAttribute("data-objective-id");
+
+        $.ajax({
+            type: "PUT",
+            url: "/Objective/completeObjective",
+            data: { id: parseInt(objId) },
+            success: function (data) {
+                console.log("Nice")
+            },
+            error: function () {
+                console.log("Not Nice")
+            }
+        });
+        
+    });
 });
 
 function hideShowModal() {

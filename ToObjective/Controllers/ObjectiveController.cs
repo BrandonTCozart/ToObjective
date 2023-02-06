@@ -36,17 +36,46 @@ namespace ToObjective.Controllers
         }
 
         [HttpPost]
-        public JsonResult postIndex(Objective obj)
+        public IActionResult postIndex(string title,string description,string completeByDate)
         {
-            _db.Objectives.Add(obj);
-            IEnumerable<Objective> objectivesList = _db.Objectives;
-            return Json(objectivesList);
+            Objective obj = new Objective(title, description, DateTime.Parse(completeByDate));
+            DbSet<Objective> objectivesList = _db.Objectives;
+            objectivesList.Add(obj);
+            _db.Objectives = objectivesList;
+            _db.SaveChanges();
+            return Json(new {success = true});
+            //return RedirectToAction("Index");
+            //return (IActionResult)objectivesList;
         }
-
         // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/ //
 
+        [HttpDelete]
+        public IActionResult delete(int id) {
+            DbSet<Objective> objectivesList = _db.Objectives;
 
+            foreach (Objective obj in objectivesList)
+            {
+                if (obj.Id == id)
+                {
+                    //objectivesList.Remove(obj);
+                    //_db.Objectives = objectivesList;
+                    _db.Objectives.Remove(obj);
+                    _db.SaveChanges();
+                }
+            }
+            return new EmptyResult();
+        }
 
+        [HttpPut]
+        public IActionResult completeObjective(int id)
+        {
+            DbSet<Objective> objectivesList = _db.Objectives;
+
+            // here //
+            
+
+            return new EmptyResult();
+        }
 
     }
 }
