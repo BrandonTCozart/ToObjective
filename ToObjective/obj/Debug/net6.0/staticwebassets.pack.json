@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\js\\create.js",
+      "PackagePath": "staticwebassets\\js\\create.js"
+    },
+    {
+      "Id": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\js\\edit.js",
+      "PackagePath": "staticwebassets\\js\\edit.js"
+    },
+    {
       "Id": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

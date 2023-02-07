@@ -12,15 +12,14 @@ body {
     border-style: solid;
     border-color: black;
     border-width: 1px;
+    padding-left: 5%;
     font-size: min(2vw, 20px);
     color: white;
 }
-
 #header h2 {
     padding-left: 5%;
     width: fit-content;
 }
-
 footer {
     position: absolute;
     bottom: 0;
@@ -28,8 +27,7 @@ footer {
     white-space: nowrap;
     line-height: 60px;
 }
-
-#container {
+.container {
     margin-top: 50px;
     margin-left: 5%;
     margin-right: 5%;
@@ -46,36 +44,28 @@ footer {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-
 .table-header-buttons {
     margin: 10px 5px;
     padding: 1vw 2vw;
     border-radius: 5px;
 }
-
-
-
 .table-container {
     max-height: 345px;
     overflow-y: scroll;
     width: 100%;
 }
-
 #table-search-box {
     margin: 15px 5px;
     border-radius: 5px;
     float: right;
     width: 15vw;
 }
-
 #to-do-table {
     width: 100%;
 }
-
 #to-do-table #button-column {
     width: 85px;
 }
-
 table,
 th,
 td {
@@ -85,13 +75,11 @@ td {
     font-family: sans-serif;
     font-size: 13px;
 }
-
 td,
 button {
     border-style: solid;
     border-width: 1px;
 }
-
 th {
     font-size: 15px;
 }
@@ -99,26 +87,9 @@ th {
 .hide {
     display: none;
 }
-
-
-
-
-#description-input-box {
-    height: 100px;
-    width: 225px;
-    resize: none;
-}
-
-#objective-maker-form{
-    margin-left:40px;
-    margin-top:10px;
-    font-weight:bold;
-}
-
 .row-color {
     background-color: lightgreen;
 }
-
 .complete-button {
     background-color: green;
 }
@@ -127,4 +98,15 @@ th {
 }
 .delete-button {
     background-color: red;
+}
+
+form {
+    text-align: center;
+    border-style: solid;
+    border-width:1px;
+    padding:15px 10px;
+}
+
+form input{
+    margin:10px;
 }

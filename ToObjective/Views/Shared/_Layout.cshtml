@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="~/ToObjective.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <div id="header">
         <h2>ToDo Application</h2>
     </div>
@@ -24,9 +27,7 @@
     </footer> 
     -->
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

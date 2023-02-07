@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-    <div id="container">
+    <div class="container">
         <div id="table-header">
         <a asp-area="" asp-controller="Objective" asp-action="addNew"> <button class="table-header-buttons" id="new-objective-button">New</button></a>
             <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
@@ -19,7 +19,8 @@
                     </tr>
                 </thead>
                 <tbody id="to-do-table-tbody">
-                @foreach (var obj in Model)
+                  
+                @foreach (var obj in Model.OrderBy(ojb => ojb.CompleteByDate).OrderBy(o => o.CompletedDate))
                     {
                     <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
                         <td>
@@ -34,7 +35,7 @@
                         <td>
                             <button class="complete-button" data-objective-id=@obj.Id>✔</button>
                             <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                            <button class="edit-button" data-objective-id=@obj.Id>✎</button>
+                            <a asp-area="" asp-controller="Objective" asp-action="edit"><button class="edit-button" data-objective-id=@obj.Id>✎</button></a>
                             
                         </td>
                     </tr>
@@ -45,5 +46,6 @@
         </div>
     </div>
 
+<script src="~/js/site.js" asp-append-version="true"></script>
 
 

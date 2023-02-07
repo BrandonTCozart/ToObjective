@@ -27,6 +27,10 @@ namespace ToObjective.Controllers
         {
             return View();
         }
+        public IActionResult edit()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult getIndex()
@@ -43,9 +47,7 @@ namespace ToObjective.Controllers
             objectivesList.Add(obj);
             _db.Objectives = objectivesList;
             _db.SaveChanges();
-            return Json(new {success = true});
-            //return RedirectToAction("Index");
-            //return (IActionResult)objectivesList;
+            return new EmptyResult();
         }
         // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/ //
 
@@ -57,8 +59,6 @@ namespace ToObjective.Controllers
             {
                 if (obj.Id == id)
                 {
-                    //objectivesList.Remove(obj);
-                    //_db.Objectives = objectivesList;
                     _db.Objectives.Remove(obj);
                     _db.SaveChanges();
                 }
@@ -69,11 +69,22 @@ namespace ToObjective.Controllers
         [HttpPut]
         public IActionResult completeObjective(int id)
         {
-            DbSet<Objective> objectivesList = _db.Objectives;
+            var result = _db.Objectives.Where(x => x.Id == id).First();
+            result.CompletedDate = DateTime.Now;
+            result.UpdatedDate = DateTime.Now;
+            _db.SaveChanges();
+            return new EmptyResult();
+        }
 
-            // here //
-            
+        [HttpPut]
 
+        public IActionResult editObjective(int id, string title, string description, string date)
+        {
+            var result = _db.Objectives.Where(x => x.Id == id).First();
+            result.Title = title;
+            result.Description = description;
+            result.CompleteByDate = DateTime.Parse(date);
+            _db.SaveChanges();
             return new EmptyResult();
         }
 
