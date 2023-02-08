@@ -1,0 +1,314 @@
+Functionality
+	-Description (Modal Box)
+	-Edit
+	-Local Storage
+jquery
+Validation
+Look Nice
+Sql bench?
+
+
+header/
+edit and create new combined 
+include time 
+Single list/
+Simple todos/
+fail first/
+fail function
+trim
+discriptive
+- instead of cammle case (cabab case)/
+date time local
+thead?
+tbody?
+
+gitcrachen?
+filter
+Detail page
+clickable title
+text area
+
+fix button spacing /
+
+button spacing
+localstorage
+deleteButton
+editButton
+CompleteButton
+
+not:
+simplification //
+objective -
+null coalessing ?? //
+js html parsing //
+
+em units css //
+updated/ created //
+duplicate ids # //
+class ids in local storage//
+Is not empty return 0 (falsy stuff) //
+prepend //
+dont apply class to every button //
+toggle classes //
+move buttons to the right side //
+less global variables //
+
+Taskids function //
+template function return row string instead 
+of making template maker global varibale
+
+:
+url
+variable for JSON.parse(localStorage.getItem("TASKS")).length //
+(!) || <= //
+$(tablebody).prepend //
+complete by date is coming in as null //
+tolocaldatestring //
+jsonrow .map
+.reverse()
+rows.JSON?. //
+description box limit
+validations //
+better names //
+
+css work:
+align stuff //
+border collapse //
+clean //
+make button red //
+
+Html
+input required (Form?) incapsulate in form //
+23 26 2
+
+
+start on 3
+plural sight 6 month trial through vs subscription (c# 10 fundamentals)
+MVC AND ANGULAR BOTH MAKING sample apps
+
+
+
+whitespaces //
+html cammel case things //
+lable tag //
+var wont be used as much anymore let would be used //
+field required //
+isEmpty > isNotEmpty //
+eventListener, disable button  [checkValidity method] https://stackoverflow.com/questions/46341171/how-to-addeventlistener-to-table-cells 
+fail fast more //
+narrow scoop functions 
+get set in names //
+beforeunload, unload
+the more functions the better
+pass the object instad of the textbox info //
+eventlistener > onclick in html
+href instead of onclick, and append id to href //
+separation of concerns //
+
+Lazy loading
+There cannot be the same title
+
+using let
+narrower function scope
+event listener
+
+Document //
+container everything //
+make table container a class //
+dezcription changes resize overflow not horizontal resizing //
+confirmation for complete and delete *
+make modal not scrollable //
+editing based on id //
+border radius for modal //
+close ===> X //
+fix modal in general //
+cancel button //
+modal validation title and date //
+change templeate maker function name //
+never commit console logs //
+remember caba case //
+id Gneration method
+fix a tag situation and formate template maker // 
+javascript closures //
+form error //
+
+use obj to register id to event listeners in tableRowInserter "Templatemaker"
+event listeners after 
+make more readable //
+
+text box limiter //
+reactive form (angular)
+1000 character restriction on description (wait)
+both invalid message
+exact validation message
+description box modal max size //
+confirmation for complte and delete //
+trim title whitespace //
+title edit to empty with whitespace allows for user to complete done //
+validation for edit aswell //
+more to the nav bar on details
+event listerner for function calls in markup //
+labels in form //
+saving things to local storage function //
+task id in local storage //
+turinary opperator in todoinserter ?
+make submit and addevenlistner //
+something other than px //
+make all names good //
+
+
+
+chain event listeners when the dom is ready //
+wrap all event listeners in a fcuntion adn call the fucntion inside of the on dom ready. /
+function that passes element id for the validation //
+make table button container a class // 
+tablerowinserter let = the html , then append it to the tbody let newrow = $(``) //
+https://api.jquery.com/children/ //
+default to incomplete row //
+data attributes https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-* 
+addclass for lightgreen color instead //
+obj.id insread of `${obj.id}` //
+objectivesJson not global varibale //
+getobjective function that takes in the id and returns the object //
+use .filter //
+automatically focus on title text input box on modal open //
+dynamically detect validation //
+disable done button //
+date validation //
+onblur //
+key down key up press //
+larger width for the details page //
+dont show null //
+all the elemtn instantiations need to be don in the dom //
+complete button click has to disable edit //
+
+not a table for the details page //
+instead of textarea(which is an input) use //
+max length not unreachable 40 characters and no blank
+modal for confirm delete isntead of default confirm
+overflow resize verticle
+onblur for when they tab //
+show that descriptionis option
+details page like the modal
+add class hide on default //
+get rid of slide up find vs filter //
+filter vs find //
+
+use the row to chain the even listeners //
+getters and setters next to each others //
+instead of filter do find to get just one
+saveObjectsToLocalStorage to string inside of method //
+
+use find on the complete objective method // 
+
+submit lister in dom ready //
+
+split up event listern for submit (add submit event lister for edit to the editobjective method) //
+
+how to clear event listeners (unbind) //
+
+https://www.google.com/search?q=get+input+type+javascript&rlz=1C1GCEA_enUS1030US1030&oq=get+input+type+&aqs=chrome.1.69i57j0i512l9.8915j0j7&sourceid=chrome&ie=UTF-8
+
+inputEventListener
+
+date clicking thing //
+in hideshow add a unbind for submit button /
+date formate for details page 
+whitespace on details table //
+whitespace between doby and date input box //
+margin on x button for modal and bottom buttons //
+show description in main page table //
+focus in hideshowmodal function //
+focus input on edit //
+foreach //
+no need for the i //
+
+move search bar to the right //
+when words are in search cannot add //
+
+search title and description //
+trim search text for space //
+
+make more readable for places where you have to scroll /
+turnary when assigning //
+not complete first at the top of the list and complete by date //
+populatetablefromlocalstorage for each //
+closest tr replaced? /
+declare all variables //
+understand ++a and a++
+row color name //
+id //
+
+close and cancel button same functionallity (give them same class)
+hasValue instead of iselementempty //
+validateinput set boolean to the condition of the if //
+lamda function
+arrow function for the populate table from local storage (there doesnt need to be a return) //
+save as a javascript date object (new Date()) so you can get rid of sorting
+dont have to clear search box on submit //
+shorter names
+do not focus on title when hiding
+
+angular is frontend framework
+javascript is runtime not compiled
+
+razor page for markup
+controller interface with front end
+ajax
+partial views
+no appending
+page for adding and editing new objectives
+.Net Main Framework
+ASP for web Development
+method sintax or other
+unit tests at the end
+scaffolding
+=~~=
+Entity Framework Core (method syntax or other)
+Scaffolding
+Partial views
+LinQ
+
+
+
+
+Add row //
+
+
+
+
+
+
+Creation Page instead of Modal
+notepad++ 
+plug in note?
+tsql
+
+Tomorrow:
+Understand Migration
+Ajax
+Entity Framework = https://www.entityframeworktutorial.net/what-is-entityframework.aspx //
+Make Roadmap for app completion 
+cpu bound = make calculations for this large set of data
+io bound = simply fetch data
+
+structure commits
+buttons fix anchor tag instad of button in a tag
+url actions https://www.youtube.com/watch?v=l9dbwzv6hcs 
+generic service layer
+layer responsible for updating database (dal) data access layer
+interfaces for dal
+dependency injection 
+datetime type instead of string and it will be parsed as it comes in
+
+Convention to have interfaces start with I.
+add interface to same folder as 
+move dataaccess to data folder
+builder addtrasnsient //
+pluralsight moday
+interfaceinterface, dataaccess
+csharp method start with capital
+rename //
+all data access operations will be asyncronous
+modelbuilder gets rid of the system mapping on its own to make sure its mapping correctly
+https://www.youtube.com/watch?v=99obDyGqoDA 
