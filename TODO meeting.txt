@@ -293,21 +293,21 @@ cpu bound = make calculations for this large set of data
 io bound = simply fetch data
 
 structure commits
-buttons fix anchor tag instad of button in a tag
-url actions https://www.youtube.com/watch?v=l9dbwzv6hcs 
-generic service layer
-layer responsible for updating database (dal) data access layer
-interfaces for dal
-dependency injection 
+buttons fix anchor tag instad of button in a tag //
+url actions https://www.youtube.com/watch?v=l9dbwzv6hcs // 
+generic service layer //
+layer responsible for updating database (dal) data access layer //
+interfaces for dal //
+dependency injection //
 datetime type instead of string and it will be parsed as it comes in
 
 Convention to have interfaces start with I.
 add interface to same folder as 
-move dataaccess to data folder
+move dataaccess to data folder //
 builder addtrasnsient //
 pluralsight moday
 interfaceinterface, dataaccess //
-csharp method start with capital
+csharp method start with capital //
 rename //
 all data access operations will be asyncronous
 modelbuilder gets rid of the system mapping on its own to make sure its mapping correctly

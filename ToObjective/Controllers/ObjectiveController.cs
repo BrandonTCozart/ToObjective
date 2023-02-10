@@ -19,7 +19,6 @@ namespace ToObjective.Controllers
         
         public IActionResult Index()
         {
-            //IEnumerable<Objective> objectivesList = _db.Objectives;
             
             return View(_dataAccess.GetObjectives());
         }
@@ -27,7 +26,6 @@ namespace ToObjective.Controllers
         [HttpPost]
         public IActionResult IndexObjective(Objective o)
         {
-            //IEnumerable<Objective> objectivesList = _db.Objectives;
             if (o != null)
             {
                 _dataAccess.AddObjective(o);
