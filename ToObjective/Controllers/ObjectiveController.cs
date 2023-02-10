@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ToObjective.Data;
+using ToObjective.Interfaces;
 using ToObjective.Models;
 
 namespace ToObjective.Controllers
@@ -9,28 +10,32 @@ namespace ToObjective.Controllers
     //[Route("api/[controller]")]
     public class ObjectiveController : Controller
     {
-        /*
-        private readonly ObjectiveDbContext _db;
+        private readonly IObjectiveInterface _dataAccess;
 
-        public ObjectiveController(ObjectiveDbContext db)
+        public ObjectiveController(IObjectiveInterface dataAccess)
         {
-            _db = db;
-        }
-        */
-        private readonly DataAccess _dataAccess;
-
-        public ObjectiveController(DataAccess dataAccess)
-        {
-            _dataAccess = dataAccess;
+            this._dataAccess = dataAccess;
         }
         
         public IActionResult Index()
         {
             //IEnumerable<Objective> objectivesList = _db.Objectives;
-            return View(_dataAccess.getObjectives());
+            
+            return View(_dataAccess.GetObjectives());
         }
 
-        public IActionResult addNew()
+        [HttpPost]
+        public IActionResult IndexObjective(Objective o)
+        {
+            //IEnumerable<Objective> objectivesList = _db.Objectives;
+            if (o != null)
+            {
+                _dataAccess.AddObjective(o);
+            }
+            return RedirectToAction("Index"); 
+        }
+        
+    public IActionResult addNew()
         {
             return View();
         }
@@ -42,7 +47,7 @@ namespace ToObjective.Controllers
         [HttpGet]
         public IActionResult getIndex()
         {
-            return Json(_dataAccess.getObjectives());
+            return Json(_dataAccess.GetObjectives());
         }
 
         /*
@@ -61,14 +66,14 @@ namespace ToObjective.Controllers
 
         [HttpDelete]
         public IActionResult delete(int id) {
-            _dataAccess.deleteObjective(id);
+            _dataAccess.DeleteObjective(id);
             return new EmptyResult();
         }
 
         [HttpPut]
         public IActionResult completeObjective(int id)
         {
-            _dataAccess.completeObjective(id);
+            _dataAccess.CompleteObjective(id);
             return new EmptyResult();
         }
 

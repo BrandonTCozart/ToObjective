@@ -8,7 +8,8 @@ public class ObjectiveDbContext :DbContext
 	public ObjectiveDbContext(DbContextOptions<ObjectiveDbContext> options) : base(options)
 	{
 	}
-    public DbSet<Objective> Objectives { get; set; }
+
+    public DbSet<Objective> Objectives { get; set;}
 
 }
 

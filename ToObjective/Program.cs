@@ -1,5 +1,6 @@
 using ToObjective.Data;
 using Microsoft.EntityFrameworkCore;
+using ToObjective.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ObjectiveDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+builder.Services.AddTransient<IObjectiveInterface, ObjectiveDAL>();
 
 var app = builder.Build();
 

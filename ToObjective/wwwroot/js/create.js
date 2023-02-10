@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+/*
 $(document).ready(function () {
     $("#create-button").on("click", function () {
         //var object = { title: $("#title-input-box").val(), description: $("#description-input-box").val(), completeByDate: $("#complete-by-input-box").val() }
@@ -21,3 +22,4 @@ $(document).ready(function () {
         //$('#create-form')[0].reset();
     });
 });
+*/

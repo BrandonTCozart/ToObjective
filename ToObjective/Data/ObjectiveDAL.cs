@@ -1,22 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ToObjective.Data;
 using ToObjective.Interfaces;
 using ToObjective.Models;
 
 
-namespace ToObjective.Controllers
+namespace ToObjective.Data
 {
-    public class DataAccess : InterfaceInterface
+    public class ObjectiveDAL : IObjectiveInterface
     {
         private readonly ObjectiveDbContext _db;
 
-        public DataAccess(ObjectiveDbContext db)
+        public ObjectiveDAL(ObjectiveDbContext db)
         {
             _db = db;
         }
 
-        public void completeObjective(int id)
+        public void AddObjective(Objective o)
+        {
+            DbSet<Objective> objectivesList = _db.Objectives;
+            objectivesList.Add(o);
+            _db.Objectives = objectivesList;
+            _db.SaveChanges();
+        }
+
+        public void CompleteObjective(int id)
         {
             var result = _db.Objectives.Where(x => x.Id == id).First();
             result.CompletedDate = DateTime.Now;
@@ -24,7 +31,7 @@ namespace ToObjective.Controllers
             _db.SaveChanges();
         }
 
-        public void deleteObjective(int id)
+        public void DeleteObjective(int id)
         {
             DbSet<Objective> objectivesList = _db.Objectives;
 
@@ -38,18 +45,18 @@ namespace ToObjective.Controllers
             }
         }
 
-        public Objective getObjectiveById(int id)
+        public Objective GetObjectiveById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Objective> getObjectives()
+        public IEnumerable<Objective> GetObjectives()
         {
             IEnumerable<Objective> objectivesList = _db.Objectives;
-            return (List<Objective>)objectivesList;
+            return objectivesList;
         }
 
-        public void setObjectives(List<Objective> list)
+        public void SetObjectives(List<Objective> list)
         {
             throw new NotImplementedException();
         }
