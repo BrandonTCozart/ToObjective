@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5TQw0b9nWRqVNav0qwUv0t0fLQAt30HyEobXph+bud0=",
+  "Hash": "TsycMDiqSgVb+mFYrN9l5qONoV1HaX21jNDt76g4CRA=",
   "Source": "ToObjective",
   "BasePath": "_content/ToObjective",
   "Mode": "Default",
@@ -83,40 +83,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\js\\create.js",
-      "SourceId": "ToObjective",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\",
-      "BasePath": "_content/ToObjective",
-      "RelativePath": "js/create.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\create.js"
-    },
-    {
-      "Identity": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\js\\edit.js",
-      "SourceId": "ToObjective",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\",
-      "BasePath": "_content/ToObjective",
-      "RelativePath": "js/edit.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\edit.js"
     },
     {
       "Identity": "C:\\Users\\bcozart\\VS\\ToObjective\\ToObjective\\wwwroot\\js\\site.js",

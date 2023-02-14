@@ -47,7 +47,7 @@ namespace ToObjective.Data
 
         public Objective GetObjectiveById(int id)
         {
-            throw new NotImplementedException();
+            return _db.Objectives.Where(x => x.Id == id).First();
         }
 
         public IEnumerable<Objective> GetObjectives()

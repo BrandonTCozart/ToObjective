@@ -6,10 +6,11 @@ let objectives;
 
 $(document).ready(function () {
 
+    /*
     $.get("/Objective/getIndex", null, function (data) {
         objectives = data;
     }); 
-
+    */
     $("#new-objective-button").on("click", function () {
         
     });
@@ -51,8 +52,10 @@ $(document).ready(function () {
         
     });
 
+    /*
     $(".edit-button").on("click", function () {
         let objId = this.getAttribute("data-objective-id");
         localStorage.setItem("editId", objId);
     });
+    */
 });
