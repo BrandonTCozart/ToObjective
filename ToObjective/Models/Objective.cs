@@ -23,5 +23,11 @@ namespace ToObjective.Models
             Description = description;
             CompleteByDate = completeByDate;
         }
+        
+        // Added empty constructor as a solution to "" //
+        public Objective()
+        {
+        }
+        
     }
 }

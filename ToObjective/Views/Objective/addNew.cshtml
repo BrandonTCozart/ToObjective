@@ -16,17 +16,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <label asp-for="Title"></label>
-                <input id="title-input-box" asp-for="Title" class="form-control" onblur="" />
+                <input id="title-input-box" asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div>
                 <label asp-for="Description" class="control-label"></label>
-                <input id="description-input-box" asp-for="Description" class="form-control" onblur=""/>
+                <input id="description-input-box" asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div>
                 <label asp-for="CompleteByDate" class="control-label"></label>
-                <input id="complete-by-input-box" asp-for="CompleteByDate" class="form-control" onblur="" />
+                <input id="complete-by-input-box" asp-for="CompleteByDate" class="form-control"  />
                 <span asp-validation-for="CompleteByDate" class="text-danger"></span>
             </div>
             <div>
@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<script src="~/js/create.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

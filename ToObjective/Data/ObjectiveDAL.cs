@@ -56,9 +56,14 @@ namespace ToObjective.Data
             return objectivesList;
         }
 
-        public void SetObjectives(List<Objective> list)
+        public void editObjectives(Objective o)
         {
-            throw new NotImplementedException();
+            var obj = _db.Objectives.Where(x => x.Id == o.Id).First();
+            obj.UpdatedDate = DateTime.Now;
+            obj.Title= o.Title;
+            obj.Description= o.Description;
+            obj.CompleteByDate = o.CompleteByDate;
+            _db.SaveChanges();
         }
     }
 }

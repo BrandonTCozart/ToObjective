@@ -6,8 +6,6 @@ using ToObjective.Models;
 
 namespace ToObjective.Controllers
 {
-    //[ApiController]
-    //[Route("api/[controller]")]
     public class ObjectiveController : Controller
     {
         private readonly IObjectiveInterface _dataAccess;
@@ -19,11 +17,14 @@ namespace ToObjective.Controllers
         
         public IActionResult Index()
         {
-            
             return View(_dataAccess.GetObjectives());
         }
 
-        
+        public IActionResult addNew()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult IndexObjective(Objective o)
         {
@@ -31,34 +32,27 @@ namespace ToObjective.Controllers
             {
                 _dataAccess.AddObjective(o);
             }
-            return new EmptyResult(); 
+            return RedirectToAction("Index");
         }
         
-
-        
-        public IActionResult addNew()
-        {
-            return View();
-        }
         public IActionResult edit( int id)
         {
             return View(_dataAccess.GetObjectiveById(id));
         }
 
-        /*
-        [HttpGet]
-        public IActionResult getIndex()
+        [HttpPost]
+        public IActionResult editObjective(Objective o)
         {
-            return Json(_dataAccess.GetObjectives());
+            _dataAccess.editObjectives(o);
+            return RedirectToAction("Index");
         }
-        */
 
         [HttpDelete]
         public IActionResult delete(int id) {
             _dataAccess.DeleteObjective(id);
             return new EmptyResult();
         }
-
+        
         [HttpPut]
         public IActionResult completeObjective(int id)
         {

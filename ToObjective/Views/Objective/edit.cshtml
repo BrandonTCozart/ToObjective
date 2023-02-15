@@ -1,33 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model Objective
+﻿@model ToObjective.Models.Objective
+
 @{
+    ViewData["Title"] = "edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-        <div id="table-header">
-        <h2>Edit Task</h2>
-        </div>
 
-        <div>
-            <form asp-action="Index">
-                <div>
-                    <label for="edit-title">Title</label>
-                <input id="edit-title" value=@Model.Title/>
-                </div>
-                <div>
-                    <label for="edit-description">Description</label>
-                <input id="edit-description" value=@Model.Description/>
-                </div>
-                <div>
-                    <label for="edit-do-date">Date</label>
-                <input id="edit-do-date" type="date" value=@Model.CompleteByDate />
-                </div>
-                <div>
-                    <button onclick="location.href='@Url.Action("Index","Objective")'">Submit</button>
-                <!-- <button>Submit</button> -->
-                </div>
-            </form>
+<div class="container">
+    <div id="table-header">
+        <h2>Edit Task</h2>
+    </div>
+    <div>
+    <form method="post" action="@Url.Action("editObjective", "Objective")">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"></label>
+                <input id="title-input-box" asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
-</div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CompleteByDate" class="control-label"></label>
+            <input asp-for="CompleteByDate" class="form-control" />
+            <span asp-validation-for="CompleteByDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Complete" class="btn btn-primary" />
+        </div>
+    </form>
+    </div>
+    </div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

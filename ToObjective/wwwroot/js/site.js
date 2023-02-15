@@ -6,11 +6,6 @@ let objectives;
 
 $(document).ready(function () {
 
-    /*
-    $.get("/Objective/getIndex", null, function (data) {
-        objectives = data;
-    }); 
-    */
     $("#new-objective-button").on("click", function () {
         
     });
@@ -36,7 +31,6 @@ $(document).ready(function () {
 
         this.closest('tr').classList.toggle('row-color');
         this.setAttribute('disabled', true);
-
         let objId = this.getAttribute("data-objective-id");
         $.ajax({
             type: "PUT",
@@ -52,10 +46,10 @@ $(document).ready(function () {
         
     });
 
-    /*
-    $(".edit-button").on("click", function () {
-        let objId = this.getAttribute("data-objective-id");
-        localStorage.setItem("editId", objId);
+
+    $("#title-input-box").on("blur", function (){
+        if(this.value.trim() == "") {
+            this.value = "";
+        }
     });
-    */
 });
