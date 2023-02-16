@@ -54,12 +54,19 @@ footer {
     overflow-y: scroll;
     width: 100%;
 }
+
 #table-search-box {
     margin: 15px 5px;
     border-radius: 5px;
     float: right;
     width: 15vw;
 }
+#table-search-button {
+    float: right;
+    margin: 15px 5px;
+    border-radius: 5px;
+}
+
 #to-do-table {
     width: 100%;
 }

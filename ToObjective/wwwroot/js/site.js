@@ -30,6 +30,7 @@ $(document).ready(function () {
     $(".complete-button").on("click", function () {
 
         this.closest('tr').classList.toggle('row-color');
+        $(this).closest('tr').find('#edit-button-id').prop("disabled", true);
         this.setAttribute('disabled', true);
         let objId = this.getAttribute("data-objective-id");
         $.ajax({
@@ -42,8 +43,7 @@ $(document).ready(function () {
             error: function () {
                 console.log("Not Nice")
             }
-        });
-        
+        });    
     });
 
 

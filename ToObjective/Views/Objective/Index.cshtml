@@ -7,7 +7,8 @@
         <div id="table-header">
         <!-- <a asp-area="" asp-controller="Objective" asp-action="addNew"> <button class="table-header-buttons" id="new-objective-button">New</button></a> -->
         <button class="table-header-buttons" id="new-objective-button" onclick="location.href='@Url.Action("addNew", "Objective")'">New</button> <!--https://www.youtube.com/watch?v=BnJ8UI-tI-E-->
-            <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
+        <button id="table-search-button">S</button>
+        <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
         </div>
         <div class="table-container">
             <table id="to-do-table">
@@ -38,7 +39,7 @@
                         <td>
                                 <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
                                 <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                                <button class="edit-button" id="new-objective-button" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'" disabled>✎</button>
+                                <button class="edit-button" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'" disabled>✎</button>
                             
                         </td>
                         }

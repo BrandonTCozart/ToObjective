@@ -313,8 +313,10 @@ all data access operations will be asyncronous
 modelbuilder gets rid of the system mapping on its own to make sure its mapping correctly
 https://www.youtube.com/watch?v=99obDyGqoDA 
 
-Disable buttons
-text font styler
-validation
+Disable buttons //
+text font styler //
+validation 
+	- white space //
 search functionallity
+	- add button next to search box
 more research 
