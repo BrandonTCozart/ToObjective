@@ -15,6 +15,7 @@ namespace ToObjective.Controllers
             this._dataAccess = dataAccess;
         }
         
+
         public IActionResult Index()
         {
             return View(_dataAccess.GetObjectives());
@@ -59,5 +60,12 @@ namespace ToObjective.Controllers
             _dataAccess.CompleteObjective(id);
             return new EmptyResult();
         }
+
+        //[HttpGet]
+        //public IEnumerable<Objective> searchBoxSearch(string searchBoxText)
+        //{
+        //    return _dataAccess.GetObjectivesByTitle(searchBoxText);
+        //}
+
     }
 }
