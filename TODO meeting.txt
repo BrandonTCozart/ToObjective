@@ -322,3 +322,9 @@ search functionallity
 more research 
 Asynchonous for controller
 linq
+
+
+on complete rows need to move down
+if search and complete, after deleting whats in search the uncompleted visual of the row shows. Same with delete
+Details page
+Need to implement async functionaility

@@ -9,6 +9,6 @@ namespace ToObjective.Interfaces
         void DeleteObjective(int id);
         void CompleteObjective(int id);
         void AddObjective(Objective o);
-        void editObjectives(Objective o);
+        void EditObjectives(Objective o);
     }
 }

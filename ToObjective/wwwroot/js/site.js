@@ -7,13 +7,7 @@ let objectives;
 $(document).ready(function () {
 
     let allToDo = tableState();
-
-    $("#new-objective-button").on("click", function () {
-        
-    });
-
     completeDeleteOnClick();
-
 
     $("#title-input-box").on("blur", function (){
         if(this.value.trim() == "") {
@@ -44,10 +38,11 @@ $(document).ready(function () {
 
 });
 
+
 function tableState() {
-    let tableLength = $("#to-do-table-tbody tr").length;
+    //let tableLength = $("#to-do-table-tbody tr").length;
     let newRow = "";
-    for (let i = 0; i <= tableLength; i++) {
+    for (let i = 0; i <= $("#to-do-table-tbody tr").length; i++) {
         newRow = newRow.concat($("#to-do-table-tbody").find("tr").eq(i).prop('outerHTML'));
     }
     return newRow;
@@ -55,13 +50,13 @@ function tableState() {
 
 function completeDeleteOnClick() {
     $(".delete-button").on("click", function () {
-        let table = document.getElementById("to-do-table");
-        table.deleteRow(this.closest('tr').rowIndex);
-        let objId = this.getAttribute("data-objective-id");
+        //let table = document.getElementById("to-do-table");
+        document.getElementById("to-do-table").deleteRow(this.closest('tr').rowIndex);
+        //let objId = this.getAttribute("data-objective-id");
         $.ajax({
             type: "DELETE",
             url: "/Objective/delete",
-            data: { id: parseInt(objId) },
+            data: { id: parseInt(this.getAttribute("data-objective-id")) },
             success: function (data) {
                 console.log("Nice")
             },
@@ -72,15 +67,14 @@ function completeDeleteOnClick() {
     });
 
     $(".complete-button").on("click", function () {
-
         this.closest('tr').classList.toggle('row-color');
         $(this).closest('tr').find('#edit-button-id').prop("disabled", true);
         this.setAttribute('disabled', true);
-        let objId = this.getAttribute("data-objective-id");
+        //let objId = this.getAttribute("data-objective-id");
         $.ajax({
             type: "PUT",
             url: "/Objective/completeObjective",
-            data: { id: parseInt(objId) },
+            data: { id: parseInt(this.getAttribute("data-objective-id")) },
             success: function (data) {
                 console.log("Nice")
             },

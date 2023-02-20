@@ -46,7 +46,7 @@ namespace ToObjective.Data
             return _db.Objectives;
         }
 
-        public void editObjectives(Objective o)
+        public void EditObjectives(Objective o)
         {
             var obj = _db.Objectives.Where(x => x.Id == o.Id).First();
             obj.UpdatedDate = DateTime.Now;

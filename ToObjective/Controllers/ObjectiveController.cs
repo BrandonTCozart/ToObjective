@@ -44,7 +44,7 @@ namespace ToObjective.Controllers
         [HttpPost]
         public IActionResult editObjective(Objective o)
         {
-            _dataAccess.editObjectives(o);
+            _dataAccess.EditObjectives(o);
             return RedirectToAction("Index");
         }
 
