@@ -51,7 +51,7 @@ namespace ToObjective.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notes");
+                    b.ToTable("Notes", (string)null);
                 });
 #pragma warning restore 612, 618
         }

@@ -10,7 +10,5 @@ namespace ToObjective.Interfaces
         void CompleteObjective(int id);
         void AddObjective(Objective o);
         void editObjectives(Objective o);
-
-        //IEnumerable<Objective> GetObjectivesByTitle(string title);
     }
 }

@@ -17,9 +17,7 @@ namespace ToObjective.Data
 
         public void AddObjective(Objective o)
         {
-            DbSet<Objective> objectivesList = _db.Objectives;
-            objectivesList.Add(o);
-            _db.Objectives = objectivesList;
+            _db.Objectives.Add(o);
             _db.SaveChanges();
         }
 
@@ -33,16 +31,9 @@ namespace ToObjective.Data
 
         public void DeleteObjective(int id)
         {
-            DbSet<Objective> objectivesList = _db.Objectives;
-
-            foreach (Objective obj in objectivesList)
-            {
-                if (obj.Id == id)
-                {
-                    _db.Objectives.Remove(obj);
-                    _db.SaveChanges();
-                }
-            }
+            var result = _db.Objectives.Where(x => x.Id == id).First();
+            _db.Objectives.Remove(result);
+            _db.SaveChanges();
         }
 
         public Objective GetObjectiveById(int id)
@@ -52,8 +43,7 @@ namespace ToObjective.Data
 
         public IEnumerable<Objective> GetObjectives()
         {
-            IEnumerable<Objective> objectivesList = _db.Objectives;
-            return objectivesList;
+            return _db.Objectives;
         }
 
         public void editObjectives(Objective o)
@@ -65,10 +55,5 @@ namespace ToObjective.Data
             obj.CompleteByDate = o.CompleteByDate;
             _db.SaveChanges();
         }
-
-        //public IEnumerable<Objective> GetObjectivesByTitle(string title)
-        //{
-        //    return _db.Objectives.Where(x => x.Title.Contains(title));
-        //}
     }
 }
