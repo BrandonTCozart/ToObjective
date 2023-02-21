@@ -14,13 +14,20 @@ namespace ToObjective.Controllers
         {
             this._dataAccess = dataAccess;
         }
-        
+
 
         public IActionResult Index()
         {
             return View(_dataAccess.GetObjectives());
         }
-
+        ////////////////////////////////////////////////////////////////////////////////////////
+        [HttpGet]
+        public IActionResult LoadTableRows(string input)
+        {
+            ViewData["tableRows"] = _dataAccess.GetByTitle(input);
+            return PartialView("_TableToDo");
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////
         public IActionResult addNew()
         {
             return View();

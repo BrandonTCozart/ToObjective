@@ -55,5 +55,21 @@ namespace ToObjective.Data
             obj.CompleteByDate = o.CompleteByDate;
             _db.SaveChanges();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        public IEnumerable<Objective> GetByTitle(string s)
+        {
+            if (s == "")
+            {
+                return _db.Objectives;
+            }
+            else
+            {
+                var objs = _db.Objectives.Where(x => x.Title.Contains(s));
+                return objs;
+            }
+            
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////
     }
 }

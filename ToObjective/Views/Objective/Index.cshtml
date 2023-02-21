@@ -20,41 +20,9 @@
                     </tr>
                 </thead>
                 <tbody id="to-do-table-tbody">
-                  
-                @foreach (var obj in Model.OrderBy(ojb => ojb.CompleteByDate).OrderBy(o => o.CompletedDate))
-                    {
-                    <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
-                        <td>
-                            @obj.Title
-                        </td>
-                        <td>
-                            @obj.Description
-                        </td>
-                        <td>
-                            @obj.CompleteByDate
-                        </td>
-                        @if (obj.CompletedDate != null)
-                        {
-                        <td>
-                                <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
-                                <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                                <button class="edit-button" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'" disabled>✎</button>
-                            
-                        </td>
-                        }
-                        else
-                        {
-                        <td>
-                                <button class="complete-button" data-objective-id=@obj.Id>✔</button>
-                                <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                                <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'">✎</button>
-                            
-                        </td>
-                        }
 
-                    </tr>
-                    }
-                
+                    <partial name="_TableToDo" />
+
                 </tbody>
             </table>
         </div>

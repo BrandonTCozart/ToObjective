@@ -14,33 +14,31 @@ $(document).ready(function () {
             this.value = "";
         }
     });
-
+    ////////////////////////////////////////////////////////////////////////////////////////
     $("#table-search-box").on('keyup', function () {
         let searchValue = $("#table-search-box").val();
         if (searchValue.trim() == "") {
             $("#to-do-table-tbody tr").remove();
-            $(document.getElementById("to-do-table-tbody")).append(allToDo);
+
         } else {
-            let tableLength = $("#to-do-table-tbody tr").length;
-            for (let i = 0; i <= tableLength; i++) {
-                if ($("#to-do-table-tbody tr").eq(i).find('td').eq(0).text().trim().includes(searchValue) != true) {
-                    $("#to-do-table-tbody").find("tr").eq(i).css("display", "none");
-                    $("#to-do-table-tbody").find("tr").eq(i).find('button').css("display", "none");
-                } else {
-                    $("#to-do-table-tbody").find("tr").eq(i).css("display", "");
-                    $("#to-do-table-tbody").find("tr").eq(i).find('button').css("display", "");
-                    $("#to-do-table-tbody").find("tr").eq(i).find('button').unbind();
+            $("#to-do-table-tbody tr").remove();
+            $.ajax({
+                url: "/Objective/LoadTableRows",
+                data: { input: searchValue },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.log(error)
                 }
-            }
+
+            });
         }
-        completeDeleteOnClick();
     });
-
 });
-
+////////////////////////////////////////////////////////////////////////////////////////
 
 function tableState() {
-    //let tableLength = $("#to-do-table-tbody tr").length;
     let newRow = "";
     for (let i = 0; i <= $("#to-do-table-tbody tr").length; i++) {
         newRow = newRow.concat($("#to-do-table-tbody").find("tr").eq(i).prop('outerHTML'));
@@ -50,9 +48,7 @@ function tableState() {
 
 function completeDeleteOnClick() {
     $(".delete-button").on("click", function () {
-        //let table = document.getElementById("to-do-table");
         document.getElementById("to-do-table").deleteRow(this.closest('tr').rowIndex);
-        //let objId = this.getAttribute("data-objective-id");
         $.ajax({
             type: "DELETE",
             url: "/Objective/delete",
@@ -70,7 +66,6 @@ function completeDeleteOnClick() {
         this.closest('tr').classList.toggle('row-color');
         $(this).closest('tr').find('#edit-button-id').prop("disabled", true);
         this.setAttribute('disabled', true);
-        //let objId = this.getAttribute("data-objective-id");
         $.ajax({
             type: "PUT",
             url: "/Objective/completeObjective",
