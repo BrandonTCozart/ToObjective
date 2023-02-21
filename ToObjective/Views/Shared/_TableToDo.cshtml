@@ -4,37 +4,49 @@
     //ViewData["Title"] = "Index";
 }
 
+<table id="to-do-table">
+                <thead>
+                    <tr>
+                        <th>Title</th> 
+                        <th>Description</th>
+                        <th>Complete By</th>
+                        <th id="button-column"> Action </th>
+                    </tr>
+                </thead>
+                <tbody id="to-do-table-tbody">
 
-@foreach (var obj in (IEnumerable<Objective>)ViewData["tableRows"] ?? Model)
-{
-    <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
-        <td>
-            @obj.Title
-        </td>
-        <td>
-            @obj.Description
-        </td>
-        <td>
-            @obj.CompleteByDate
-        </td>
-        @if (obj.CompletedDate != null)
-        {
-            <td>
-                <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
-                <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                <button class="edit-button" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'" disabled>✎</button>
+                    @foreach (var obj in (IEnumerable<Objective>)ViewData["tableRows"] ?? Model)
+                    {
+                        <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
+                            <td>
+                                @obj.Title
+                            </td>
+                            <td>
+                                @obj.Description
+                            </td>
+                            <td>
+                                @obj.CompleteByDate
+                            </td>
+                            @if (obj.CompletedDate != null)
+                            {
+                                <td>
+                                    <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
+                                    <button class="delete-button" data-objective-id=@obj.Id>✖</button>
+                                    <button class="edit-button" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'" disabled>✎</button>
 
-            </td>
-        }
-        else
-        {
-            <td>
-                <button class="complete-button" data-objective-id=@obj.Id>✔</button>
-                <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'">✎</button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <button class="complete-button" data-objective-id=@obj.Id>✔</button>
+                                    <button class="delete-button" data-objective-id=@obj.Id>✖</button>
+                                    <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'">✎</button>
 
-            </td>
-        }
+                                </td>
+                            }
 
-    </tr>
-}
+                        </tr>
+                    }
+                    </tbody>
+            </table>
