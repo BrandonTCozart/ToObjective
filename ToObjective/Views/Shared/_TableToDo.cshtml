@@ -15,7 +15,7 @@
                 </thead>
                 <tbody id="to-do-table-tbody">
 
-                    @foreach (var obj in (IEnumerable<Objective>)ViewData["tableRows"] ?? Model)
+                    @foreach (var obj in Model)
                     {
                         <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
                             <td>
@@ -32,14 +32,14 @@
                                 <td>
                                     <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
                                     <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                                    <button class="edit-button" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'" disabled>✎</button>
+                                    <button class="edit-button" data-objective-id=@obj.Id disabled>✎</button>
 
                                 </td>
                             }
                             else
                             {
                                 <td>
-                                    <button class="complete-button" data-objective-id=@obj.Id>✔</button>
+                                    <button class="complete-button" data-objective-id="@obj.Id">✔</button>
                                     <button class="delete-button" data-objective-id=@obj.Id>✖</button>
                                     <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("edit", "Objective", new {id = obj.Id})'">✎</button>
 

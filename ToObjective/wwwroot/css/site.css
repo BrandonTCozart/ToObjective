@@ -82,6 +82,14 @@ td {
     font-family: sans-serif;
     font-size: 13px;
 }
+table, p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 50vw;
+    white-space: nowrap;
+    margin-right: 0px;
+}
+
 td,
 button {
     border-style: solid;

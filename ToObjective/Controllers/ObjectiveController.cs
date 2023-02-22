@@ -15,19 +15,17 @@ namespace ToObjective.Controllers
             this._dataAccess = dataAccess;
         }
 
-
         public IActionResult Index()
         {
             return View(_dataAccess.GetObjectives());
         }
-        ////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpGet]
         public IActionResult LoadTableRows(string input)
         {
-            ViewData["tableRows"] = _dataAccess.GetByTitle(input);
-            return PartialView("_TableToDo");
+            return PartialView("_TableToDo", _dataAccess.GetByTitle(input));
         }
-        ////////////////////////////////////////////////////////////////////////////////////////
+
         public IActionResult addNew()
         {
             return View();
@@ -36,10 +34,7 @@ namespace ToObjective.Controllers
         [HttpPost]
         public IActionResult IndexObjective(Objective o)
         {
-            if (o != null)
-            {
-                _dataAccess.AddObjective(o);
-            }
+            _dataAccess.AddObjective(o);
             return RedirectToAction("Index");
         }
         
@@ -58,14 +53,14 @@ namespace ToObjective.Controllers
         [HttpDelete]
         public IActionResult delete(int id) {
             _dataAccess.DeleteObjective(id);
-            return new EmptyResult();
+            return PartialView("_TableToDo", _dataAccess.GetObjectives());
         }
         
         [HttpPut]
         public IActionResult completeObjective(int id)
         {
             _dataAccess.CompleteObjective(id);
-            return new EmptyResult();
+            return PartialView("_TableToDo", _dataAccess.GetObjectives());
         }
     }
 }

@@ -10,7 +10,7 @@
         <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
         </div>
         <div class="table-container">
-                    <partial name="_TableToDo" />
+                    @await Html.PartialAsync("_TableToDo",Model)
         </div>
     </div>
 

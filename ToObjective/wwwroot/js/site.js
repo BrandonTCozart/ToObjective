@@ -6,8 +6,8 @@ let objectives;
 
 $(document).ready(function () {
 
-    let allToDo = tableState();
-    completeDeleteOnClick();
+    completeOnClick();
+    deleteOnClick();
 
     $("#title-input-box").on("blur", function (){
         if(this.value.trim() == "") {
@@ -15,70 +15,57 @@ $(document).ready(function () {
         }
     });
 
-    ////////////////////////////////////////////////////////////////////////////////////////
     $("#table-search-box").on('keyup', function () {
-        let searchValue = $("#table-search-box").val();
-        if (searchValue.trim() == "") {
-            $("#to-do-table-tbody tr").remove();
-
-        } else {
-            $("#to-do-table-tbody tr").remove();
-            $.ajax({
-                url: "/Objective/LoadTableRows",
-                data: { input: searchValue },
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function (error) {
-                    console.log(error)
-                }
-
-            });
-        }
-    });
-    ////////////////////////////////////////////////////////////////////////////////////////
-});
-
-function tableState() {
-    let newRow = "";
-    for (let i = 0; i <= $("#to-do-table-tbody tr").length; i++) {
-        newRow = newRow.concat($("#to-do-table-tbody").find("tr").eq(i).prop('outerHTML'));
-    }
-    return newRow;
-}
-
-function completeDeleteOnClick() {
-    $(".delete-button").on("click", function () {
-        document.getElementById("to-do-table").deleteRow(this.closest('tr').rowIndex);
         $.ajax({
-            type: "DELETE",
-            url: "/Objective/delete",
-            data: { id: parseInt(this.getAttribute("data-objective-id")) },
+            url: "/Objective/LoadTableRows",
+            data: { input: $("#table-search-box").val()},
             success: function (data) {
-                console.log("Nice")
+                newTable(data);
             },
-            error: function () {
-                console.log("Not Nice")
+            error: function (error) {
+                console.log(error);
             }
         });
     });
+});
 
+function completeOnClick() {
     $(".complete-button").on("click", function () {
-        this.closest('tr').classList.toggle('row-color');
-        $(this).closest('tr').find('#edit-button-id').prop("disabled", true);
-        this.setAttribute('disabled', true);
         $.ajax({
             type: "PUT",
             url: "/Objective/completeObjective",
             data: { id: parseInt(this.getAttribute("data-objective-id")) },
             success: function (data) {
-                console.log("Nice")
+                newTable(data)
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    });
+}
+
+function deleteOnClick() {
+    $(".delete-button").on("click", function () {
+        $.ajax({
+            type: "DELETE",
+            url: "/Objective/delete",
+            data: { id: parseInt(this.getAttribute("data-objective-id")) },
+            success: function (data) {
+                newTable(data)
             },
             error: function () {
                 console.log("Not Nice")
             }
         });
     });
+}
+
+function newTable(data) {
+    $("#to-do-table").remove();
+    $(".table-container").append(data);
+    completeOnClick();
+    deleteOnClick();
 }
 
 

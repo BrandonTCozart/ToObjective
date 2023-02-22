@@ -17,8 +17,13 @@ namespace ToObjective.Data
 
         public void AddObjective(Objective o)
         {
-            _db.Objectives.Add(o);
-            _db.SaveChanges();
+            if (o == null)
+            { }
+            else
+            {
+                _db.Objectives.Add(o);
+                _db.SaveChanges();
+            }
         }
 
         public void CompleteObjective(int id)
@@ -31,8 +36,7 @@ namespace ToObjective.Data
 
         public void DeleteObjective(int id)
         {
-            var result = _db.Objectives.Where(x => x.Id == id).First();
-            _db.Objectives.Remove(result);
+            _db.Objectives.Remove(_db.Objectives.Where(x => x.Id == id).First());
             _db.SaveChanges();
         }
 
@@ -43,7 +47,10 @@ namespace ToObjective.Data
 
         public IEnumerable<Objective> GetObjectives()
         {
-            return _db.Objectives;
+            return from x in _db.Objectives
+                   orderby x.CompleteByDate ascending
+                   orderby x.CompletedDate ascending
+                   select x;
         }
 
         public void EditObjectives(Objective o)
@@ -56,20 +63,22 @@ namespace ToObjective.Data
             _db.SaveChanges();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////
         public IEnumerable<Objective> GetByTitle(string s)
         {
-            if (s == "")
+            if (s == "" || s == null)
             {
-                return _db.Objectives;
+                return from x in _db.Objectives
+                       orderby x.CompletedDate ascending
+                       select x;
             }
             else
             {
-                var objs = _db.Objectives.Where(x => x.Title.Contains(s));
-                return objs;
+                return from x in _db.Objectives
+                       where x.Title.Contains(s)
+                       orderby x.CompletedDate ascending
+                       select x;
             }
             
         }
-        ////////////////////////////////////////////////////////////////////////////////////////
     }
 }
