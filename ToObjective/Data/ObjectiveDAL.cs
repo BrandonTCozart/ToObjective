@@ -15,14 +15,12 @@ namespace ToObjective.Data
             _db = db;
         }
 
-        public void AddObjective(Objective o)
+        public async Task AddObjective(Objective o)
         {
-            if (o == null)
-            { }
-            else
+            if (o != null)
             {
                 _db.Objectives.Add(o);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
             }
         }
 
@@ -40,19 +38,18 @@ namespace ToObjective.Data
             _db.SaveChanges();
         }
 
-        public Objective GetObjectiveById(int id)
+        public async Task<Objective> GetObjectiveById(int id)
         {
-            return _db.Objectives.Where(x => x.Id == id).First();
+            return await Task.FromResult(_db.Objectives.Where(x => x.Id == id).First());
         }
 
-        public IEnumerable<Objective> GetObjectives()
+        public async Task<IEnumerable<Objective>> GetObjectivesAsync()
         {
-            return from x in _db.Objectives
-                   orderby x.CompleteByDate ascending
-                   orderby x.CompletedDate ascending
-                   select x;
+            return await Task.FromResult(from x in _db.Objectives
+                                         orderby x.CompletedDate ascending,x.CompleteByDate ascending
+                                         select x);
         }
-
+        
         public void EditObjectives(Objective o)
         {
             var obj = _db.Objectives.Where(x => x.Id == o.Id).First();
@@ -63,21 +60,19 @@ namespace ToObjective.Data
             _db.SaveChanges();
         }
 
-        public IEnumerable<Objective> GetByTitle(string s)
+        public async Task<IEnumerable<Objective>> GetByTitle(string s)
         {
             if (s == "" || s == null)
             {
-                return from x in _db.Objectives
+                return await Task.FromResult(from x in _db.Objectives
                        orderby x.CompletedDate ascending
-                       select x;
+                       select x);
             }
-            else
-            {
-                return from x in _db.Objectives
-                       where x.Title.Contains(s)
-                       orderby x.CompletedDate ascending
-                       select x;
-            }
+            return await Task.FromResult(from x in _db.Objectives
+                   where x.Title.Contains(s)
+                   orderby x.CompletedDate ascending
+                   select x);
+            
             
         }
     }

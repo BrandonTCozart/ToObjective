@@ -14,16 +14,24 @@ namespace ToObjective.Controllers
         {
             this._dataAccess = dataAccess;
         }
-
-        public IActionResult Index()
+        
+        public async Task<IActionResult> Index()
         {
-            return View(_dataAccess.GetObjectives());
+            var objectives = await _dataAccess.GetObjectivesAsync();
+            return View(objectives);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var objective = await _dataAccess.GetObjectiveById(id);
+            return View(objective);
         }
 
         [HttpGet]
-        public IActionResult LoadTableRows(string input)
+        public async Task<IActionResult> LoadTableRows(string input) 
         {
-            return PartialView("_TableToDo", _dataAccess.GetByTitle(input));
+            var objective =  await _dataAccess.GetByTitle(input);
+            return PartialView("_TableToDo", objective);
         }
 
         public IActionResult addNew()
@@ -32,15 +40,16 @@ namespace ToObjective.Controllers
         }
 
         [HttpPost]
-        public IActionResult IndexObjective(Objective o)
+        public async Task<IActionResult> IndexObjective(Objective o) 
         {
-            _dataAccess.AddObjective(o);
+            await _dataAccess.AddObjective(o);
             return RedirectToAction("Index");
         }
-        
-        public IActionResult edit( int id)
+
+        public async Task<IActionResult> edit( int id)
         {
-            return View(_dataAccess.GetObjectiveById(id));
+            var objective = await _dataAccess.GetObjectiveById(id);
+            return View(objective);
         }
 
         [HttpPost]
@@ -51,16 +60,18 @@ namespace ToObjective.Controllers
         }
 
         [HttpDelete]
-        public IActionResult delete(int id) {
+        public async Task<IActionResult> delete(int id) {
             _dataAccess.DeleteObjective(id);
-            return PartialView("_TableToDo", _dataAccess.GetObjectives());
+            var objective = await _dataAccess.GetObjectivesAsync();
+            return PartialView("_TableToDo", objective);
         }
         
         [HttpPut]
-        public IActionResult completeObjective(int id)
+        public async Task<IActionResult> completeObjective(int id)
         {
             _dataAccess.CompleteObjective(id);
-            return PartialView("_TableToDo", _dataAccess.GetObjectives());
+            var objective = await _dataAccess.GetObjectivesAsync();
+            return PartialView("_TableToDo", objective);
         }
     }
 }

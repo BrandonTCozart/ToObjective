@@ -18,7 +18,7 @@
                     @foreach (var obj in Model)
                     {
                         <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
-                            <td>
+                            <td onclick="location.href='@Url.Action("Details", "Objective",new {id = obj.Id} )'">
                                 @obj.Title
                             </td>
                             <td>

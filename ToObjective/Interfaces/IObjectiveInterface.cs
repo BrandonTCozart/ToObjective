@@ -4,12 +4,12 @@ namespace ToObjective.Interfaces
 {
     public interface IObjectiveInterface
     {
-        IEnumerable<Objective> GetObjectives();
-        Objective GetObjectiveById(int id);
+        Task<IEnumerable<Objective>> GetObjectivesAsync();
+        Task<Objective> GetObjectiveById(int id);
         void DeleteObjective(int id);
         void CompleteObjective(int id);
-        void AddObjective(Objective o);
+        Task AddObjective(Objective o);
         void EditObjectives(Objective o);
-        IEnumerable<Objective> GetByTitle(string s);
+        Task<IEnumerable<Objective>> GetByTitle(string s);
     }
 }
