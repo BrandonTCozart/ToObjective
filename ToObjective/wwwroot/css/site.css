@@ -82,6 +82,11 @@ td {
     font-family: sans-serif;
     font-size: 13px;
 }
+
+#title-column {
+    cursor: pointer;
+}
+
 table, p {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -124,4 +129,18 @@ form {
 
 form input{
     margin:10px;
+}
+
+dt{
+    font-weight:bold;
+}
+dd{
+    border-style:solid;
+    border-width:1px;
+    border-color:black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    inline-size:fit-content;
+    padding-right:5px;
+    padding-left:2px;
 }

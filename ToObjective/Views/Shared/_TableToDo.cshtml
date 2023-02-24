@@ -18,7 +18,7 @@
                     @foreach (var obj in Model)
                     {
                         <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
-                            <td onclick="location.href='@Url.Action("Details", "Objective",new {id = obj.Id} )'">
+                            <td id="title-column" onclick="location.href='@Url.Action("Details", "Objective",new {id = obj.Id} )'">
                                 @obj.Title
                             </td>
                             <td>
@@ -33,7 +33,6 @@
                                     <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
                                     <button class="delete-button" data-objective-id=@obj.Id>✖</button>
                                     <button class="edit-button" data-objective-id=@obj.Id disabled>✎</button>
-
                                 </td>
                             }
                             else
@@ -50,3 +49,5 @@
                     }
                     </tbody>
             </table>
+
+<script src="~/js/site.js" asp-append-version="true"></script>

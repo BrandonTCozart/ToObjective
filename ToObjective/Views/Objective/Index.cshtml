@@ -14,6 +14,31 @@
         </div>
     </div>
 
+    <!--------------------------------------------------------------->
+    <div id="reuseable-modal" class="hide">
+        <div id="modal-content">
+
+            <div id="modal-header">
+                <h2>Modal <button type="button" id="modal-close-button">✖</button></h2>
+            </div>
+            <form id="objective-maker-form">
+                <div id="modal-input-boxes">
+                    <h4><label for="title-input-box">Title</label></h4>
+                    <input id="title-input-box" type="text" maxlength="40">
+                    <p id="title-validation" style="display: none;">Cannot be Empty</p>
+                    <h4><label for="description-input-box">Description</label> </h4>
+                    <textarea name="none" id="description-input-box" cols="30" rows="10" maxlength="1000"></textarea>
+                    <h4 id="doby-section"><label for="description-input-box">Do By:</label> <input id="doby-input-box" type="date"></h4>
+                    <p id="date-validation" style="display: none;">Cannot be Empty</p>
+                </div>
+            </form>
+            <button id="modal-cancel-button"> Cancel </button>
+            <button id="modal-submit-button"> Done </button>
+        </div>
+    </div>
+    <!--------------------------------------------------------------->
+
+
 <script src="~/js/site.js" asp-append-version="true"></script>
 
 

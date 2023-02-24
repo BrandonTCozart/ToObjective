@@ -329,6 +329,16 @@ if search and complete, after deleting whats in search the uncompleted visual of
 Details page
 Need to implement async functionaility
 
-reload partial view for the complete delete
-pagination
-decouple event listener and function
+reload partial view for the complete delete //
+pagination //
+decouple event listener and function //
+
+Organize Notes
+details page clickable rows //
+delete button modal
+trim title box //
+getTable //
+innerhtml instead of removing then appending //
+script inside of the partial view html for onclick listeners //
+validation
+naming conventions // 
