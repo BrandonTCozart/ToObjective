@@ -34,7 +34,7 @@ namespace ToObjective.Controllers
             return PartialView("_TableToDo", objective);
         }
 
-        public IActionResult addNew()
+        public IActionResult AddNew()
         {
             return View();
         }
@@ -46,30 +46,30 @@ namespace ToObjective.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> edit( int id)
+        public async Task<IActionResult> Edit( int id)
         {
             var objective = await _dataAccess.GetObjectiveById(id);
             return View(objective);
         }
 
         [HttpPost]
-        public IActionResult editObjective(Objective o)
+        public IActionResult EditObjective(Objective o)
         {
             _dataAccess.EditObjectives(o);
             return RedirectToAction("Index");
         }
 
         [HttpDelete]
-        public async Task<IActionResult> delete(int id) {
-            _dataAccess.DeleteObjective(id);
+        public async Task<IActionResult> Delete(int id) {
+            await _dataAccess.DeleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
             return PartialView("_TableToDo", objective);
         }
         
         [HttpPut]
-        public async Task<IActionResult> completeObjective(int id)
+        public async Task<IActionResult> CompleteObjective(int id)
         {
-            _dataAccess.CompleteObjective(id);
+            await _dataAccess.CompleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
             return PartialView("_TableToDo", objective);
         }

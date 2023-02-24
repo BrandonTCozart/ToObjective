@@ -6,7 +6,7 @@
 $(document).ready(function () {
 
     $(".complete-button").on("click", completeOnClick)
-    $(".delete-button").on("click", deleteOnClick)
+    $(".delete-button").on("click", deleteButtonOnClick)
 
     $("#title-input-box").on("blur", function () {
         this.value.trim()
@@ -24,6 +24,22 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#modal-cancel-button").on("click", function () {
+        localStorage.removeItem("itemToDelete");
+        $("#reuseable-modal").toggleClass("hide");
+    });
+
+    $("#modal-close-button").on("click", function () {
+        localStorage.removeItem("itemToDelete");
+        $("#reuseable-modal").toggleClass("hide");
+    });
+
+    $("#modal-submit-button").on("click", function () {
+        deletePermanently();
+        $("#reuseable-modal").toggleClass("hide");
+    });
+
 });
 
 function completeOnClick() {
@@ -40,11 +56,16 @@ function completeOnClick() {
     });
 }
 
-function deleteOnClick() {
+function deleteButtonOnClick() {
+    $("#reuseable-modal").toggleClass("hide");
+    localStorage.setItem("itemToDelete", this.getAttribute("data-objective-id"));
+}
+
+function deletePermanently() {
     $.ajax({
         type: "DELETE",
         url: "/Objective/delete",
-        data: { id: parseInt(this.getAttribute("data-objective-id")) },
+        data: { id: parseInt(localStorage.getItem("itemToDelete")) },
         success: function (data) {
             getTable(data)
         },
@@ -52,10 +73,13 @@ function deleteOnClick() {
             console.log("Not Nice")
         }
     });
+    localStorage.removeItem("itemToDelete");
 }
 
 function getTable(data) {
     $(".table-container").html(data);
+    $(".complete-button").on("click", completeOnClick)
+    $(".delete-button").on("click", deleteButtonOnClick)
 }
 
 

@@ -16,16 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\bcozart\VS\ToObjective\ToObjective
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/addNew.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXGFkZE5ldy5jc2h0bWw=
+[C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/AddNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXEFkZE5ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXGVkaXQuY3NodG1s
+[C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/Index.cshtml]

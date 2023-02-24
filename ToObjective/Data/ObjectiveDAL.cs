@@ -24,18 +24,18 @@ namespace ToObjective.Data
             }
         }
 
-        public void CompleteObjective(int id)
+        public async Task CompleteObjective(int id)
         {
             var result = _db.Objectives.Where(x => x.Id == id).First();
             result.CompletedDate = DateTime.Now;
             result.UpdatedDate = DateTime.Now;
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
 
-        public void DeleteObjective(int id)
+        public async Task DeleteObjective(int id)
         {
             _db.Objectives.Remove(_db.Objectives.Where(x => x.Id == id).First());
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
 
         public async Task<Objective> GetObjectiveById(int id)
@@ -50,14 +50,14 @@ namespace ToObjective.Data
                                          select x);
         }
         
-        public void EditObjectives(Objective o)
+        public async Task EditObjectives(Objective o)
         {
             var obj = _db.Objectives.Where(x => x.Id == o.Id).First();
             obj.UpdatedDate = DateTime.Now;
             obj.Title= o.Title;
             obj.Description= o.Description;
             obj.CompleteByDate = o.CompleteByDate;
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Objective>> GetByTitle(string s)
