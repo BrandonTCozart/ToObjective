@@ -1,6 +1,5 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
-
 // Write your JavaScript code.
 
 $(document).ready(function () {
@@ -47,8 +46,15 @@ function completeOnClick() {
         type: "PUT",
         url: "/Objective/completeObjective",
         data: { id: parseInt(this.getAttribute("data-objective-id")) },
+        beforeSend: function () {
+            //$(".table-container").fadeOut(1000);
+            //$("#loader").toggleClass("hide");
+        },
         success: function (data) {
-            getTable(data)
+            //$("#loader").toggleClass("hide");
+            //$(".table-container").fadeIn();
+            getTable(data);
+
         },
         error: function (error) {
             console.log(error)
@@ -66,8 +72,14 @@ function deletePermanently() {
         type: "DELETE",
         url: "/Objective/delete",
         data: { id: parseInt(localStorage.getItem("itemToDelete")) },
+        beforeSend: function () {
+            //$(".table-container").fadeOut(1000);
+            //$("#loader").toggleClass("hide");
+        },
         success: function (data) {
-            getTable(data)
+            //$("#loader").toggleClass("hide");
+            //$(".table-container").fadeIn();
+            getTable(data);
         },
         error: function () {
             console.log("Not Nice")

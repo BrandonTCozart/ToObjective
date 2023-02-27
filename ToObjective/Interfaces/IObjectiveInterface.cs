@@ -10,6 +10,6 @@ namespace ToObjective.Interfaces
         Task CompleteObjective(int id);
         Task AddObjective(Objective o);
         Task EditObjectives(Objective o);
-        Task<IEnumerable<Objective>> GetByTitle(string s);
+        Task<IEnumerable<Objective>> GetByTitleDescription(string s);
     }
 }

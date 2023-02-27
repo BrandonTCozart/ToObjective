@@ -60,7 +60,7 @@ namespace ToObjective.Data
             await _db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Objective>> GetByTitle(string s)
+        public async Task<IEnumerable<Objective>> GetByTitleDescription(string s)
         {
             if (s == "" || s == null)
             {
@@ -69,7 +69,7 @@ namespace ToObjective.Data
                        select x);
             }
             return await Task.FromResult(from x in _db.Objectives
-                   where x.Title.Contains(s)
+                   where x.Title.Contains(s) || x.Description.Contains(s)
                    orderby x.CompletedDate ascending
                    select x);
             

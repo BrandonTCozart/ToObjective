@@ -30,7 +30,7 @@ namespace ToObjective.Controllers
         [HttpGet]
         public async Task<IActionResult> LoadTableRows(string input) 
         {
-            var objective =  await _dataAccess.GetByTitle(input);
+            var objective =  await _dataAccess.GetByTitleDescription(input);
             return PartialView("_TableToDo", objective);
         }
 
