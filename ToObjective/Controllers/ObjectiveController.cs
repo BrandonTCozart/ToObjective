@@ -33,9 +33,13 @@ namespace ToObjective.Controllers
             var objective =  await _dataAccess.GetByTitleDescription(input);
             return PartialView("_TableToDo", objective);
         }
-
-        public IActionResult AddNew()
+        public async Task<IActionResult> AddNew(int id = -1)
         {
+            if (id != -1)
+            {
+                var objective = await _dataAccess.GetObjectiveById(id);
+                return View(objective);
+            }
             return View();
         }
 
@@ -46,11 +50,7 @@ namespace ToObjective.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Edit( int id)
-        {
-            var objective = await _dataAccess.GetObjectiveById(id);
-            return View(objective);
-        }
+        
 
         [HttpPost]
         public IActionResult EditObjective(Objective o)

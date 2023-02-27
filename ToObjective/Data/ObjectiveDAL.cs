@@ -26,7 +26,7 @@ namespace ToObjective.Data
 
         public async Task CompleteObjective(int id)
         {
-            var result = _db.Objectives.Where(x => x.Id == id).First();
+            var result = _db.Objectives.Where(x => x.Id == id).FirstOrDefault();
             result.CompletedDate = DateTime.Now;
             result.UpdatedDate = DateTime.Now;
             await _db.SaveChangesAsync();
@@ -34,13 +34,13 @@ namespace ToObjective.Data
 
         public async Task DeleteObjective(int id)
         {
-            _db.Objectives.Remove(_db.Objectives.Where(x => x.Id == id).First());
+            _db.Objectives.Remove(_db.Objectives.Where(x => x.Id == id).FirstOrDefault());
             await _db.SaveChangesAsync();
         }
 
         public async Task<Objective> GetObjectiveById(int id)
         {
-            return await Task.FromResult(_db.Objectives.Where(x => x.Id == id).First());
+            return await Task.FromResult(_db.Objectives.Where(x => x.Id == id).FirstOrDefault());
         }
 
         public async Task<IEnumerable<Objective>> GetObjectivesAsync()
@@ -52,7 +52,8 @@ namespace ToObjective.Data
         
         public async Task EditObjectives(Objective o)
         {
-            var obj = _db.Objectives.Where(x => x.Id == o.Id).First();
+
+            var obj = _db.Objectives.Where(x => x.Id == o.Id).FirstOrDefault();
             obj.UpdatedDate = DateTime.Now;
             obj.Title= o.Title;
             obj.Description= o.Description;
@@ -62,7 +63,7 @@ namespace ToObjective.Data
 
         public async Task<IEnumerable<Objective>> GetByTitleDescription(string s)
         {
-            if (s == "" || s == null)
+            if (s == null)
             {
                 return await Task.FromResult(from x in _db.Objectives
                        orderby x.CompletedDate ascending
