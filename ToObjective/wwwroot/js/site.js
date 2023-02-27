@@ -8,7 +8,7 @@ $(document).ready(function () {
     $(".delete-button").on("click", deleteButtonOnClick)
 
     $("#title-input-box").on("blur", function () {
-        this.value.trim()
+        $(this).value = this.value.trim();
     });
 
     $("#table-search-box").on('keyup', function () {

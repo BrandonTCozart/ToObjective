@@ -342,3 +342,45 @@ innerhtml instead of removing then appending //
 script inside of the partial view html for onclick listeners //
 validation
 naming conventions // 
+
+Styling
+Merge Create and edit views // 
+Dal Improvements //
+
+https://stackoverflow.com/questions/1347172/explanation-why-ienumerable-is-more-efficient-than-a-list 
+
+
+//////////////////////////////////////////////////////////////////////////
+
+more than one character for the function parameters
+findasync for keys (will return id) if info is cahced then will not communicate tot he db
+ var result = _db.Objectives.Where(x => x.Id == id).FirstOrDefault();
+to
+ var result = _db.Objectives.findasynch(id);
+
+fail fast deleteobjective 
+
+s == null||
+
+delete and complete controller. dont want to render partial view every time 
+complete and delete.
+
+get table should send an ajax request to lead table rows.
+data attribute on modal for object id
+exception handling 
+loading screen
+search functionality separate from onclick
+search button instead of keyup
+
+exception filter easier?
+exception hangling not found page
+funtion to hide modal
+fix onblur for create new
+valitation in objective.cs
+
+input type text area
+
+
+push with each solution to these changes
+
+ctrl+k+d

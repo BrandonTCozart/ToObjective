@@ -14,7 +14,7 @@ namespace ToObjective.Controllers
         {
             this._dataAccess = dataAccess;
         }
-        
+
         public async Task<IActionResult> Index()
         {
             var objectives = await _dataAccess.GetObjectivesAsync();
@@ -28,9 +28,9 @@ namespace ToObjective.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> LoadTableRows(string input) 
+        public async Task<IActionResult> LoadTableRows(string input)
         {
-            var objective =  await _dataAccess.GetByTitleDescription(input);
+            var objective = await _dataAccess.GetByTitleDescription(input);
             return PartialView("_TableToDo", objective);
         }
         public async Task<IActionResult> AddNew(int id = -1)
@@ -44,13 +44,13 @@ namespace ToObjective.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IndexObjective(Objective o) 
+        public async Task<IActionResult> IndexObjective(Objective o)
         {
             await _dataAccess.AddObjective(o);
             return RedirectToAction("Index");
         }
 
-        
+
 
         [HttpPost]
         public IActionResult EditObjective(Objective o)
@@ -60,12 +60,13 @@ namespace ToObjective.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id) {
+        public async Task<IActionResult> Delete(int id)
+        {
             await _dataAccess.DeleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
             return PartialView("_TableToDo", objective);
         }
-        
+
         [HttpPut]
         public async Task<IActionResult> CompleteObjective(int id)
         {
