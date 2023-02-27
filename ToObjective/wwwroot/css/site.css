@@ -73,6 +73,7 @@ footer {
 #to-do-table #button-column {
     width: 85px;
 }
+
 table,
 th,
 td {
@@ -201,6 +202,7 @@ dd{
     margin-top: 10px;
 }
 
+
 #loader {
     position: absolute;
     top: 50%;
@@ -212,7 +214,7 @@ dd{
     height: 20px;
     animation: spin 2s linear infinite;
 }
-
+/* https://www.w3schools.com/howto/howto_css_loader.asp */ 
 @keyframes spin {
     0% {
         transform: rotate(0deg);
