@@ -26,15 +26,19 @@ namespace ToObjective.Data
 
         public async Task CompleteObjective(int id)
         {
-            var result = _db.Objectives.Where(x => x.Id == id).FirstOrDefault();
-            result.CompletedDate = DateTime.Now;
-            result.UpdatedDate = DateTime.Now;
+            var result = _db.Objectives.FindAsync(id);
+            result.Result.CompletedDate= DateTime.Now;
+            result.Result.UpdatedDate = DateTime.Now;
             await _db.SaveChangesAsync();
         }
 
         public async Task DeleteObjective(int id)
         {
-            _db.Objectives.Remove(_db.Objectives.Where(x => x.Id == id).FirstOrDefault());
+            if (id == null)
+            {
+                return;
+            }
+            _db.Objectives.Remove(await _db.Objectives.FindAsync(id));
             await _db.SaveChangesAsync();
         }
 
@@ -61,16 +65,11 @@ namespace ToObjective.Data
             await _db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Objective>> GetByTitleDescription(string s)
+        public async Task<IEnumerable<Objective>> GetByTitleDescription(string searchBoxString)
         {
-            if (s == null)
-            {
-                return await Task.FromResult(from x in _db.Objectives
-                       orderby x.CompletedDate ascending
-                       select x);
-            }
+            
             return await Task.FromResult(from x in _db.Objectives
-                   where x.Title.Contains(s) || x.Description.Contains(s)
+                   where searchBoxString == null || x.Title.Contains(searchBoxString) || x.Description.Contains(searchBoxString)
                    orderby x.CompletedDate ascending
                    select x);
             

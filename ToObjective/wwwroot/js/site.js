@@ -53,7 +53,7 @@ function completeOnClick() {
         success: function (data) {
             //$("#loader").toggleClass("hide");
             //$(".table-container").fadeIn();
-            getTable(data);
+            getTable();
 
         },
         error: function (error) {
@@ -70,7 +70,7 @@ function deleteButtonOnClick() {
 function deletePermanently() {
     $.ajax({
         type: "DELETE",
-        url: "/Objective/delete",
+        url: "/Objective/Delete",
         data: { id: parseInt(localStorage.getItem("itemToDelete")) },
         beforeSend: function () {
             //$(".table-container").fadeOut(1000);
@@ -79,7 +79,7 @@ function deletePermanently() {
         success: function (data) {
             //$("#loader").toggleClass("hide");
             //$(".table-container").fadeIn();
-            getTable(data);
+            getTable();
         },
         error: function () {
             console.log("Not Nice")
@@ -88,10 +88,29 @@ function deletePermanently() {
     localStorage.removeItem("itemToDelete");
 }
 
+/*
 function getTable(data) {
     $(".table-container").html(data);
     $(".complete-button").on("click", completeOnClick)
     $(".delete-button").on("click", deleteButtonOnClick)
+}
+*/
+
+function getTable() {
+
+    $.ajax({
+        url: "/Objective/LoadTableRows",
+        data: { input: $("#table-search-box").val() },
+        success: function (data) {
+            $(".table-container").html(data);
+            $(".complete-button").on("click", completeOnClick)
+            $(".delete-button").on("click", deleteButtonOnClick)
+            //return data;
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 }
 
 

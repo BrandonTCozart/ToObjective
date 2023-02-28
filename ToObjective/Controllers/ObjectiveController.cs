@@ -44,35 +44,37 @@ namespace ToObjective.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IndexObjective(Objective o)
+        public async Task<IActionResult> IndexObjective(Objective obj)
         {
-            await _dataAccess.AddObjective(o);
+            await _dataAccess.AddObjective(obj);
             return RedirectToAction("Index");
         }
 
 
 
         [HttpPost]
-        public IActionResult EditObjective(Objective o)
+        public IActionResult EditObjective(Objective obj)
         {
-            _dataAccess.EditObjectives(o);
+            _dataAccess.EditObjectives(obj);
             return RedirectToAction("Index");
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<object> Delete(int id)
         {
             await _dataAccess.DeleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
-            return PartialView("_TableToDo", objective);
+            //return PartialView("_TableToDo", objective);
+            return 1;
         }
 
         [HttpPut]
-        public async Task<IActionResult> CompleteObjective(int id)
+        public async Task<object> CompleteObjective(int id)
         {
             await _dataAccess.CompleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
-            return PartialView("_TableToDo", objective);
+            //return PartialView("_TableToDo", objective);
+            return null;
         }
     }
 }
