@@ -4,10 +4,7 @@
 
 $(document).ready(function () {
     $("#table-container").toggleClass("blur-table");
-
-
-    $(".complete-button").on("click", completeOnClick)
-    $(".delete-button").on("click", deleteButtonOnClick)
+    completeDeleteOnclicks();
 
     $("#title-input-box").on("blur", function () {
         this.value = this.value.trim();
@@ -16,24 +13,15 @@ $(document).ready(function () {
     let timeOut;
     $("#table-search-box").on('keyup', function () {
         clearTimeout(timeOut);
-        timeOut = setTimeout(function () { getTable(); }, 800);
+        timeOut = setTimeout(function () { getTable(); }, 500);
     });
 
-    $("#modal-cancel-button").on("click", function () {
-        localStorage.removeItem("itemToDelete");
-        toggleModal();
-    });
-
-    $("#modal-close-button").on("click", function () {
-        localStorage.removeItem("itemToDelete");
-        toggleModal();
-    });
+    $("#modal-cancel-button").add("#modal-close-button").on("click", closeModal);
 
     $("#modal-submit-button").on("click", function () {
         deletePermanently();
         toggleModal();
     });
-
 });
 
 function completeOnClick() {
@@ -42,13 +30,10 @@ function completeOnClick() {
         url: "/Objective/completeObjective",
         data: { id: parseInt(this.getAttribute("data-objective-id")) },
         beforeSend: function () {
-            $("#loader").toggleClass("hide");
-            $("#table-container").toggleClass("blur-table");
-
+            loadingTable();
         },
         success: function (data) {
             getTable();
-
         },
         error: function (error) {
             console.log(error)
@@ -67,9 +52,7 @@ function deletePermanently() {
         url: "/Objective/Delete",
         data: { id: parseInt($("#reuseable-modal").data("id")) },
         beforeSend: function () {
-            $("#loader").toggleClass("hide");
-            $("#table-container").toggleClass("blur-table");
-
+            loadingTable();
         },
         success: function (data) {
             getTable();
@@ -88,15 +71,10 @@ function getTable() {
         data: { input: $("#table-search-box").val() },
         success: function (data) {
             if (!$("#loader").hasClass("hide")) {
-
-                $("#loader").toggleClass("hide");
-                $("#table-container").toggleClass("blur-table");
+                loadingTable();
             }
-
             $("#table-container").html(data);
-            $(".complete-button").on("click", completeOnClick)
-            $(".delete-button").on("click", deleteButtonOnClick)
-            //return data;
+            completeDeleteOnclicks();
         },
         error: function (error) {
             console.log(error);
@@ -104,7 +82,22 @@ function getTable() {
     });
 }
 
+function completeDeleteOnclicks() {
+    $(".complete-button").on("click", completeOnClick);
+    $(".delete-button").on("click", deleteButtonOnClick);
+}
+
 function toggleModal() {
     $("#reuseable-modal").toggleClass("hide");
+}
+
+function closeModal() {
+    localStorage.removeItem("itemToDelete");
+    toggleModal();
+}
+
+function loadingTable() {
+    $("#loader").toggleClass("hide");
+    $("#table-container").toggleClass("blur-table");
 }
 
