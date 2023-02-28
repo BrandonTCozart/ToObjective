@@ -3,33 +3,35 @@
     ViewData["Title"] = "Index";
 }
 
-    <div class="container">
-        <div id="table-header">
+<div class="container">
+    <div class="hide" id="loader"></div>
+
+    <div id="table-header">
         <!-- <a asp-area="" asp-controller="Objective" asp-action="addNew"> <button class="table-header-buttons" id="new-objective-button">New</button></a> -->
         <button class="table-header-buttons" id="new-objective-button" onclick="location.href='@Url.Action("addNew", "Objective")'">New</button> <!--https://www.youtube.com/watch?v=BnJ8UI-tI-E-->
         <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
-        </div>
-        <div class="table-container">
-
-                    @await Html.PartialAsync("_TableToDo",Model)
-        </div>
     </div>
+    <div id="table-container" class="blur-table">
 
-    <!--------------------------------------------------------------->
-    <div id="reuseable-modal" class="hide">
-        <div id="modal-content">
-
-            <div id="modal-header">
-                <h2>Confirmation <button type="button" id="modal-close-button">✖</button></h2>
-            </div>
-
-            <div id="confirmation-message"> Are you sure? </div>
-            
-            <button id="modal-cancel-button"> Cancel </button>
-            <button id="modal-submit-button"> Yes </button>
-        </div>
+        @await Html.PartialAsync("_TableToDo",Model)
     </div>
-    <!--------------------------------------------------------------->
+</div>
+
+<!--------------------------------------------------------------->
+<div id="reuseable-modal" class="hide">
+    <div id="modal-content">
+
+        <div id="modal-header">
+            <h2>Confirmation <button type="button" id="modal-close-button">✖</button></h2>
+        </div>
+
+        <div id="confirmation-message"> Are you sure? </div>
+
+        <button id="modal-cancel-button"> Cancel </button>
+        <button id="modal-submit-button"> Yes </button>
+    </div>
+</div>
+<!--------------------------------------------------------------->
 
 
 <script src="~/js/site.js" asp-append-version="true"></script>

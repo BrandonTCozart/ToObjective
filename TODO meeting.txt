@@ -352,20 +352,20 @@ https://stackoverflow.com/questions/1347172/explanation-why-ienumerable-is-more-
 
 //////////////////////////////////////////////////////////////////////////
 
-more than one character for the function parameters
-findasync for keys (will return id) if info is cahced then will not communicate tot he db
+more than one character for the function parameters //
+findasync for keys (will return id) if info is cahced then will not communicate tot he db //
  var result = _db.Objectives.Where(x => x.Id == id).FirstOrDefault();
 to
  var result = _db.Objectives.findasynch(id);
 
-fail fast deleteobjective 
+fail fast deleteobjective //
 
-s == null||
+s == null|| //
 
-delete and complete controller. dont want to render partial view every time 
-complete and delete.
+delete and complete controller. dont want to render partial view every time //
+complete and delete.  //
 
-get table should send an ajax request to lead table rows.
+get table should send an ajax request to load table rows. //
 data attribute on modal for object id
 exception handling 
 loading screen

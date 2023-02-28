@@ -64,7 +64,6 @@ namespace ToObjective.Controllers
         {
             await _dataAccess.DeleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
-            //return PartialView("_TableToDo", objective);
             return 1;
         }
 
@@ -73,7 +72,6 @@ namespace ToObjective.Controllers
         {
             await _dataAccess.CompleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
-            //return PartialView("_TableToDo", objective);
             return null;
         }
     }

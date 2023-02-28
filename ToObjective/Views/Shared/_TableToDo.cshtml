@@ -14,8 +14,6 @@
                     </tr>
                 </thead>
                 <tbody id="to-do-table-tbody">
-        <!-- <div class="hide" id="loader"></div> -->
-
                     @foreach (var obj in Model)
                     {
                         <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">

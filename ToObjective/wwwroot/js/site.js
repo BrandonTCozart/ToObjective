@@ -3,40 +3,35 @@
 // Write your JavaScript code.
 
 $(document).ready(function () {
+    $("#table-container").toggleClass("blur-table");
+
 
     $(".complete-button").on("click", completeOnClick)
     $(".delete-button").on("click", deleteButtonOnClick)
 
     $("#title-input-box").on("blur", function () {
-        $(this).value = this.value.trim();
+        this.value = this.value.trim();
     });
 
+    let timeOut;
     $("#table-search-box").on('keyup', function () {
-        $.ajax({
-            url: "/Objective/LoadTableRows",
-            data: { input: $("#table-search-box").val()},
-            success: function (data) {
-                getTable(data);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
+        clearTimeout(timeOut);
+        timeOut = setTimeout(function () { getTable(); }, 800);
     });
 
     $("#modal-cancel-button").on("click", function () {
         localStorage.removeItem("itemToDelete");
-        $("#reuseable-modal").toggleClass("hide");
+        toggleModal();
     });
 
     $("#modal-close-button").on("click", function () {
         localStorage.removeItem("itemToDelete");
-        $("#reuseable-modal").toggleClass("hide");
+        toggleModal();
     });
 
     $("#modal-submit-button").on("click", function () {
         deletePermanently();
-        $("#reuseable-modal").toggleClass("hide");
+        toggleModal();
     });
 
 });
@@ -47,12 +42,11 @@ function completeOnClick() {
         url: "/Objective/completeObjective",
         data: { id: parseInt(this.getAttribute("data-objective-id")) },
         beforeSend: function () {
-            //$(".table-container").fadeOut(1000);
-            //$("#loader").toggleClass("hide");
+            $("#loader").toggleClass("hide");
+            $("#table-container").toggleClass("blur-table");
+
         },
         success: function (data) {
-            //$("#loader").toggleClass("hide");
-            //$(".table-container").fadeIn();
             getTable();
 
         },
@@ -63,38 +57,29 @@ function completeOnClick() {
 }
 
 function deleteButtonOnClick() {
-    $("#reuseable-modal").toggleClass("hide");
-    localStorage.setItem("itemToDelete", this.getAttribute("data-objective-id"));
+    toggleModal();
+    $("#reuseable-modal").data("id", this.getAttribute("data-objective-id"));
 }
 
 function deletePermanently() {
     $.ajax({
         type: "DELETE",
         url: "/Objective/Delete",
-        data: { id: parseInt(localStorage.getItem("itemToDelete")) },
+        data: { id: parseInt($("#reuseable-modal").data("id")) },
         beforeSend: function () {
-            //$(".table-container").fadeOut(1000);
-            //$("#loader").toggleClass("hide");
+            $("#loader").toggleClass("hide");
+            $("#table-container").toggleClass("blur-table");
+
         },
         success: function (data) {
-            //$("#loader").toggleClass("hide");
-            //$(".table-container").fadeIn();
             getTable();
         },
         error: function () {
             console.log("Not Nice")
         }
     });
-    localStorage.removeItem("itemToDelete");
 }
 
-/*
-function getTable(data) {
-    $(".table-container").html(data);
-    $(".complete-button").on("click", completeOnClick)
-    $(".delete-button").on("click", deleteButtonOnClick)
-}
-*/
 
 function getTable() {
 
@@ -102,7 +87,13 @@ function getTable() {
         url: "/Objective/LoadTableRows",
         data: { input: $("#table-search-box").val() },
         success: function (data) {
-            $(".table-container").html(data);
+            if (!$("#loader").hasClass("hide")) {
+
+                $("#loader").toggleClass("hide");
+                $("#table-container").toggleClass("blur-table");
+            }
+
+            $("#table-container").html(data);
             $(".complete-button").on("click", completeOnClick)
             $(".delete-button").on("click", deleteButtonOnClick)
             //return data;
@@ -113,4 +104,7 @@ function getTable() {
     });
 }
 
+function toggleModal() {
+    $("#reuseable-modal").toggleClass("hide");
+}
 
