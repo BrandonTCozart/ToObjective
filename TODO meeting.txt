@@ -384,22 +384,39 @@ input type text area
 push with each solution to these changes
 
 ctrl+k+d
+ctrl+k+e
 
-findAsync without the FromResult
+findAsync without the FromResult //
 set query equal to from
 to list async
 await query to list
 
 addnew fix
-
-ok() return default ok
-
+ok() return default ok //
+delete objective id will never be null //
 z index for loading
-home icon
-
+home icon //
 jquery ajax send ajax stop
+disable sumbit should take care /
+onclicks 
 
+Make column headers description sticky
+trim string query before backend fucntionality
+no whitespace queries 
+use callbacks before 
+abstracting hidding and showing the table in different functions
+so the gettable does not hide and show the loading screen
+null check in complete opbjective
+var query = await _db.Objectives.FindAsync(id); istead of var query = await _db.Objectives.Where(x => x.Id == id).FirstAsync();
+try catch in getobjective is doing the smae thing as findAsync
+_db.update
+returning view with null equivilant to returning view with nothing? 
+await and remove .Result
 
-disable sumbit should take care
+get rid od getObjectives async and use getTitleDescription method in Dal
 
+validations 
+	- max length of title
+trycatch
+not found page
 rename

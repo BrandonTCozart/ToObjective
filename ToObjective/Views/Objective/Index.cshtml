@@ -7,11 +7,11 @@
     <div class="hide" id="loader"></div>
 
     <div id="table-header">
-        <!-- <a asp-area="" asp-controller="Objective" asp-action="addNew"> <button class="table-header-buttons" id="new-objective-button">New</button></a> -->
-        <button class="table-header-buttons" id="new-objective-button" onclick="location.href='@Url.Action("addNew", "Objective")'">New</button> <!--https://www.youtube.com/watch?v=BnJ8UI-tI-E-->
+        <!-- <a asp-area="" asp-controller="Objective" asp-action="AddEdit"> <button class="table-header-buttons" id="new-objective-button">New</button></a> -->
+        <button class="table-header-buttons" id="new-objective-button" onclick="location.href='@Url.Action("AddEdit", "Objective")'">New</button> <!--https://www.youtube.com/watch?v=BnJ8UI-tI-E-->
         <input id="table-search-box" type="text" maxlength="40" placeholder="Search">
     </div>
-    <div id="table-container" class="blur-table">
+    <div id="table-container">
 
         @await Html.PartialAsync("_TableToDo",Model)
     </div>

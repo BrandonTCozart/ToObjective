@@ -34,7 +34,7 @@ namespace ToObjective.Data
 
         public async Task DeleteObjective(int id)
         {
-            if (id == null)
+            if (await _db.Objectives.FindAsync(id) == null)
             {
                 return;
             }
@@ -44,8 +44,16 @@ namespace ToObjective.Data
 
         public async Task<Objective> GetObjectiveById(int id)
         {
-            var query = await _db.Objectives.Where(x => x.Id == id).ToListAsync();
-            return query.FirstOrDefault();
+            try
+            {
+                var query = await _db.Objectives.Where(x => x.Id == id).FirstAsync();
+                return query;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+         
         }
 
         public async Task<IEnumerable<Objective>> GetObjectivesAsync()
@@ -59,11 +67,11 @@ namespace ToObjective.Data
         public async Task EditObjectives(Objective o)
         {
 
-            var obj = _db.Objectives.Where(x => x.Id == o.Id).FirstOrDefault();
-            obj.UpdatedDate = DateTime.Now;
-            obj.Title= o.Title;
-            obj.Description= o.Description;
-            obj.CompleteByDate = o.CompleteByDate;
+            var obj = _db.Objectives.Where(x => x.Id == o.Id).FirstAsync();
+            obj.Result.UpdatedDate = DateTime.Now;
+            obj.Result.Title= o.Title;
+            obj.Result.Description= o.Description;
+            obj.Result.CompleteByDate = o.CompleteByDate;
             await _db.SaveChangesAsync();
         }
 

@@ -14,7 +14,7 @@ namespace ToObjective.Controllers
         {
             this._dataAccess = dataAccess;
         }
-
+        
         public async Task<IActionResult> Index()
         {
             var objectives = await _dataAccess.GetObjectivesAsync();
@@ -33,14 +33,15 @@ namespace ToObjective.Controllers
             var objective = await _dataAccess.GetByTitleDescription(input);
             return PartialView("_TableToDo", objective);
         }
-        public async Task<IActionResult> AddNew(int id)
+
+        public async Task<IActionResult> AddEdit(int id)
         {
-            //if (id != -)
-            //{
+            if (await _dataAccess.GetObjectiveById(id) == null)
+            {
+                return View();
+            }
                 var objective = await _dataAccess.GetObjectiveById(id);
                 return View(objective);
-            //}
-            //return View();
         }
 
         [HttpPost]
@@ -64,7 +65,7 @@ namespace ToObjective.Controllers
         {
             await _dataAccess.DeleteObjective(id);
             var objective = await _dataAccess.GetObjectivesAsync();
-            return 1;
+            return Ok();
         }
 
         [HttpPut]

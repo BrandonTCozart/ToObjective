@@ -1,7 +1,7 @@
 ﻿@model ToObjective.Models.Objective
 
 @{
-    ViewData["Title"] = "addNew";
+    ViewData["Title"] = "AddEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,6 +10,7 @@
 @if (Model == null)
 {
     <div class="container">
+        <div class="hide" id="loader"></div>
         <div id="table-header">
             <h2>Create Task</h2>
         </div>
@@ -46,6 +47,8 @@
 else
 {
     <div class="container">
+        <div class="hide" id="loader"></div>
+
         <div id="table-header">
             <h2>Edit Task</h2>
         </div>
@@ -65,11 +68,11 @@ else
                 </div>
                 <div class="form-group">
                     <label asp-for="CompleteByDate" class="control-label"></label>
-                    <input asp-for="CompleteByDate" class="form-control" />
+                    <input id="complete-by-input-box" asp-for="CompleteByDate" class="form-control" />
                     <span asp-validation-for="CompleteByDate" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Complete" class="btn btn-primary" />
+                    <input id="create-button" type="submit" value="Complete" class="btn btn-primary" />
                     <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index","Objective")';" />
 
                 </div>

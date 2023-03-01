@@ -13,8 +13,11 @@ body {
     border-color: black;
     border-width: 1px;
     padding-left: 5%;
+    padding-right:10%;
     font-size: min(2vw, 20px);
     color: white;
+    height: 50px;
+    padding-top: 20px;
 }
 #header h2 {
     padding-left: 5%;
@@ -54,12 +57,7 @@ footer {
     overflow-y: scroll;
     width: 100%;
 }
-.blur-table {
-    background-color: white;
-    opacity: 0.5;
-    background-position: center;
-    pointer-events: none;
-}
+
 
 #table-search-box {
     margin: 15px 5px;
@@ -95,7 +93,7 @@ td {
     cursor: pointer;
 }
 
-table, p {
+table p {
     text-overflow: ellipsis;
     width: 40vw;
     white-space: nowrap;
@@ -229,4 +227,24 @@ dd{
     100% {
         transform: rotate(360deg);
     }
+
+
 }
+
+.blur-table {
+    background-color: white;
+    opacity: 0.5;
+    background-position: center;
+    pointer-events: none;
+}
+
+#Home-button {
+    display: inline;
+    float: right;
+    margin: 0px 0px;
+    cursor: pointer;
+}
+#Page-header-title{
+    display: inline;
+}
+

@@ -3,7 +3,6 @@
 // Write your JavaScript code.
 
 $(document).ready(function () {
-    $("#table-container").toggleClass("blur-table");
     completeDeleteOnclicks();
 
     $("#title-input-box").on("blur", function () {
@@ -18,9 +17,17 @@ $(document).ready(function () {
 
     $("#modal-cancel-button").add("#modal-close-button").on("click", closeModal);
 
+
     $("#modal-submit-button").on("click", function () {
         deletePermanently();
         toggleModal();
+    });
+
+    $("#create-button").on("click", function () {
+        if ($("#title-input-box").val() && $("#complete-by-input-box").val()) {
+            loadingSection();
+            $("#create-button").hide();
+        }
     });
 });
 
@@ -30,7 +37,7 @@ function completeOnClick() {
         url: "/Objective/completeObjective",
         data: { id: parseInt(this.getAttribute("data-objective-id")) },
         beforeSend: function () {
-            loadingTable();
+            loadingSection();
         },
         success: function (data) {
             getTable();
@@ -52,7 +59,7 @@ function deletePermanently() {
         url: "/Objective/Delete",
         data: { id: parseInt($("#reuseable-modal").data("id")) },
         beforeSend: function () {
-            loadingTable();
+            loadingSection();
         },
         success: function (data) {
             getTable();
@@ -71,7 +78,7 @@ function getTable() {
         data: { input: $("#table-search-box").val() },
         success: function (data) {
             if (!$("#loader").hasClass("hide")) {
-                loadingTable();
+                loadingSection();
             }
             $("#table-container").html(data);
             completeDeleteOnclicks();
@@ -88,6 +95,8 @@ function completeDeleteOnclicks() {
 
     $(".complete-button").on("click", completeOnClick);
     $(".delete-button").on("click", deleteButtonOnClick);
+    $(".edit-button").on("click", loadingSection);
+
 }
 
 function toggleModal() {
@@ -99,8 +108,8 @@ function closeModal() {
     toggleModal();
 }
 
-function loadingTable() {
+function loadingSection() {
     $("#loader").toggleClass("hide");
-    $("#table-container").toggleClass("blur-table");
+    $(".container").toggleClass("blur-table");
 }
 
