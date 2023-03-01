@@ -358,7 +358,7 @@ findasync for keys (will return id) if info is cahced then will not communicate 
 to
  var result = _db.Objectives.findasynch(id);
 
-fail fast deleteobjective //
+fail fast deleteobjective 
 
 s == null|| //
 
@@ -366,16 +366,16 @@ delete and complete controller. dont want to render partial view every time //
 complete and delete.  //
 
 get table should send an ajax request to load table rows. //
-data attribute on modal for object id
+data attribute on modal for object id. //
 exception handling 
-loading screen
-search functionality separate from onclick
-search button instead of keyup
+loading screen entire screen instead of just table, make it center and blur all //
+search functionality separate from onclick //
+search button instead of keyup -//
 
 exception filter easier?
-exception hangling not found page
-funtion to hide modal
-fix onblur for create new
+exception handling not found page
+funtion to hide modal //
+fix onblur for create new //
 valitation in objective.cs
 
 input type text area
@@ -384,3 +384,22 @@ input type text area
 push with each solution to these changes
 
 ctrl+k+d
+
+findAsync without the FromResult
+set query equal to from
+to list async
+await query to list
+
+addnew fix
+
+ok() return default ok
+
+z index for loading
+home icon
+
+jquery ajax send ajax stop
+
+
+disable sumbit should take care
+
+rename

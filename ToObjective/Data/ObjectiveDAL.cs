@@ -44,14 +44,16 @@ namespace ToObjective.Data
 
         public async Task<Objective> GetObjectiveById(int id)
         {
-            return await Task.FromResult(_db.Objectives.Where(x => x.Id == id).FirstOrDefault());
+            var query = await _db.Objectives.Where(x => x.Id == id).ToListAsync();
+            return query.FirstOrDefault();
         }
 
         public async Task<IEnumerable<Objective>> GetObjectivesAsync()
         {
-            return await Task.FromResult(from x in _db.Objectives
+            var query = from x in _db.Objectives
                                          orderby x.CompletedDate ascending,x.CompleteByDate ascending
-                                         select x);
+                                         select x;
+            return await query.ToListAsync();
         }
         
         public async Task EditObjectives(Objective o)
@@ -68,12 +70,13 @@ namespace ToObjective.Data
         public async Task<IEnumerable<Objective>> GetByTitleDescription(string searchBoxString)
         {
             
-            return await Task.FromResult(from x in _db.Objectives
+             var query = from x in _db.Objectives
                    where searchBoxString == null || x.Title.Contains(searchBoxString) || x.Description.Contains(searchBoxString)
                    orderby x.CompletedDate ascending
-                   select x);
-            
-            
+                   select x;
+            return await query.ToListAsync();
+
+
         }
     }
 }

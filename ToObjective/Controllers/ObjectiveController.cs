@@ -33,14 +33,14 @@ namespace ToObjective.Controllers
             var objective = await _dataAccess.GetByTitleDescription(input);
             return PartialView("_TableToDo", objective);
         }
-        public async Task<IActionResult> AddNew(int id = -1)
+        public async Task<IActionResult> AddNew(int id)
         {
-            if (id != -1)
-            {
+            //if (id != -)
+            //{
                 var objective = await _dataAccess.GetObjectiveById(id);
                 return View(objective);
-            }
-            return View();
+            //}
+            //return View();
         }
 
         [HttpPost]

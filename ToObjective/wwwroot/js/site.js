@@ -83,6 +83,9 @@ function getTable() {
 }
 
 function completeDeleteOnclicks() {
+    //$(document).on("click", .classname,function () { completeOnClick() })
+    //$(document).on("click", .classname,function () { deleteButtonOnClick() })
+
     $(".complete-button").on("click", completeOnClick);
     $(".delete-button").on("click", deleteButtonOnClick);
 }
