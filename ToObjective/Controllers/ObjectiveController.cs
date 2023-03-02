@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ToObjective.Data;
 using ToObjective.Interfaces;
 using ToObjective.Models;
 
@@ -14,16 +12,25 @@ namespace ToObjective.Controllers
         {
             this._dataAccess = dataAccess;
         }
-        
+
         public async Task<IActionResult> Index()
         {
-            var objectives = await _dataAccess.GetObjectivesAsync();
+            var objectives = await _dataAccess.GetByTitleDescription();
             return View(objectives);
+        }
+
+        public IActionResult NotFound()
+        {
+            return View();
         }
 
         public async Task<IActionResult> Details(int id)
         {
             var objective = await _dataAccess.GetObjectiveById(id);
+            if (objective == null)
+            {
+                return RedirectToAction("NotFound");
+            }
             return View(objective);
         }
 
@@ -40,8 +47,8 @@ namespace ToObjective.Controllers
             {
                 return View();
             }
-                var objective = await _dataAccess.GetObjectiveById(id);
-                return View(objective);
+            var objective = await _dataAccess.GetObjectiveById(id);
+            return View(objective);
         }
 
         [HttpPost]
@@ -64,7 +71,6 @@ namespace ToObjective.Controllers
         public async Task<object> Delete(int id)
         {
             await _dataAccess.DeleteObjective(id);
-            var objective = await _dataAccess.GetObjectivesAsync();
             return Ok();
         }
 
@@ -72,7 +78,7 @@ namespace ToObjective.Controllers
         public async Task<object> CompleteObjective(int id)
         {
             await _dataAccess.CompleteObjective(id);
-            var objective = await _dataAccess.GetObjectivesAsync();
+            var objective = await _dataAccess.GetByTitleDescription();
             return null;
         }
     }

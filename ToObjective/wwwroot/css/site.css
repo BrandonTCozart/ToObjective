@@ -73,21 +73,34 @@ footer {
 
 #to-do-table {
     width: 100%;
+    padding: 0px;
 }
 #to-do-table #button-column {
     width: 85px;
 }
+th {
+    z-index:1;
+    position: sticky;
+    top: 0;
+    font-size: 15px;
+    border: 1px solid;
+    border-collapse: separate;
+    padding: .5vw .5vw;
+    font-family: sans-serif;
+    background: white;
+}
 
 table,
-th,
 td {
     border: 1px solid;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0px;
     padding: .5vw .5vw;
     font-family: sans-serif;
     font-size: 13px;
     position: relative;
 }
+
 
 #title-column {
     cursor: pointer;
@@ -105,9 +118,7 @@ button {
     border-style: solid;
     border-width: 1px;
 }
-th {
-    font-size: 15px;
-}
+
 
 .hide {
     display: none;
@@ -246,5 +257,21 @@ dd{
 }
 #Page-header-title{
     display: inline;
+}
+
+#description-input-box{
+    resize:vertical;
+    max-height:100px;
+    max-width:300px;
+}
+
+#description-column{
+    max-width:500px;
+}
+
+#title-column {
+    max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 

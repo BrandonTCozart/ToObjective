@@ -358,7 +358,7 @@ findasync for keys (will return id) if info is cahced then will not communicate 
 to
  var result = _db.Objectives.findasynch(id);
 
-fail fast deleteobjective 
+fail fast deleteobjective //
 
 s == null|| //
 
@@ -368,19 +368,18 @@ complete and delete.  //
 get table should send an ajax request to load table rows. //
 data attribute on modal for object id. //
 exception handling 
-loading screen entire screen instead of just table, make it center and blur all //
+loading screen entire screen instead of just table, //
+make it center and blur all //
 search functionality separate from onclick //
 search button instead of keyup -//
 
 exception filter easier?
-exception handling not found page
+exception handling not found page //
 funtion to hide modal //
 fix onblur for create new //
 valitation in objective.cs
 
 input type text area
-
-
 push with each solution to these changes
 
 ctrl+k+d
@@ -400,23 +399,30 @@ jquery ajax send ajax stop
 disable sumbit should take care /
 onclicks 
 
-Make column headers description sticky
+Make column headers description sticky // 
+
 trim string query before backend fucntionality
 no whitespace queries 
 use callbacks before 
 abstracting hidding and showing the table in different functions
 so the gettable does not hide and show the loading screen
-null check in complete opbjective
-var query = await _db.Objectives.FindAsync(id); istead of var query = await _db.Objectives.Where(x => x.Id == id).FirstAsync();
-try catch in getobjective is doing the smae thing as findAsync
-_db.update
-returning view with null equivilant to returning view with nothing? 
-await and remove .Result
 
-get rid od getObjectives async and use getTitleDescription method in Dal
+null check in complete opbjective //
+
+var query = await _db.Objectives.FindAsync(id); istead of var query = await _db.Objectives.Where(x => x.Id == id).FirstAsync(); //
+try catch in getobjective is doing the smae thing as findAsync //
+
+_db.update //
+
+returning view with null equivilant to returning view with nothing? //
+await and remove .Result //
+
+get rid od getObjectives async and use getTitleDescription method in Dal //
 
 validations 
 	- max length of title
 trycatch
-not found page
+not found page //
 rename
+
+try catches added but make sure the result of them is correct

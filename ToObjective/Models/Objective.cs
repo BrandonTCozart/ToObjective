@@ -9,6 +9,8 @@ namespace ToObjective.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; } // https://www.youtube.com/watch?v=mydm-jIWwTY //
+
+        [MaxLength(50)]
         public string Title { get; set; }
         public string? Description { get; set; }
         public DateTime CompleteByDate { get; set; }

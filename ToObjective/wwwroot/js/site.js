@@ -75,7 +75,7 @@ function getTable() {
 
     $.ajax({
         url: "/Objective/LoadTableRows",
-        data: { input: $("#table-search-box").val() },
+        data: { input: $("#table-search-box").val().trim() },
         success: function (data) {
             if (!$("#loader").hasClass("hide")) {
                 loadingSection();
