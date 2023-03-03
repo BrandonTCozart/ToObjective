@@ -72,7 +72,7 @@ else
                     <span asp-validation-for="CompleteByDate" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input id="create-button" type="submit" value="Complete" class="btn btn-primary" />
+                    <button id="edit-button" type="submit"> Complete </button>
                     <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index","Objective")';" />
 
                 </div>
@@ -80,13 +80,7 @@ else
 
         </div>
     </div>
-
-
-
-
 }
-
-
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

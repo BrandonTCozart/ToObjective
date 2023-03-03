@@ -8,16 +8,16 @@ namespace ToObjective.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; } // https://www.youtube.com/watch?v=mydm-jIWwTY //
-
+        public int Id { get; set; } 
         [MaxLength(50)]
+        [Required(ErrorMessage = "Title is Required")]
         public string Title { get; set; }
         public string? Description { get; set; }
+        [Required(ErrorMessage = "CompleteByDate is required")]
         public DateTime CompleteByDate { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public DateTime UpdatedDate { get; set;} = DateTime.Now;
+        public DateTime UpdatedDate { get; set; } = DateTime.Now;
         public DateTime? CompletedDate { get; set; }
-
 
         public Objective(string title, string? description, DateTime completeByDate)
         {
@@ -25,11 +25,10 @@ namespace ToObjective.Models
             Description = description;
             CompleteByDate = completeByDate;
         }
-        
-        // Added empty constructor as a solution to "" //
+
         public Objective()
         {
         }
-        
+
     }
 }

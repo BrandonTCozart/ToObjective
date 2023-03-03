@@ -9,13 +9,21 @@ $(document).ready(function () {
         this.value = this.value.trim();
     });
 
+    let searchBoxValue;
+    $("#table-search-box").on('keydown', function () {
+        searchBoxValue = $("#table-search-box").val().trim();
+    });
+
     let timeOut;
     $("#table-search-box").on('keyup', function () {
+        if (searchBoxValue == $("#table-search-box").val().trim()) {
+            return;
+        }
         clearTimeout(timeOut);
         timeOut = setTimeout(function () { getTable(); }, 500);
     });
 
-    $("#modal-cancel-button").add("#modal-close-button").on("click", closeModal);
+    $("#modal-cancel-button").add("#modal-close-button").on("click", toggleModal);
 
 
     $("#modal-submit-button").on("click", function () {
@@ -23,9 +31,18 @@ $(document).ready(function () {
         toggleModal();
     });
 
+    $("#edit-button").on("click", function () {
+        if ($("#title-input-box").val() && $("#complete-by-input-box").val()) {
+            loadingAnim();
+            hideShowTable();
+            $("#create-button").hide();
+        }
+    })
+
     $("#create-button").on("click", function () {
         if ($("#title-input-box").val() && $("#complete-by-input-box").val()) {
-            loadingSection();
+            loadingAnim();
+            hideShowTable();
             $("#create-button").hide();
         }
     });
@@ -37,13 +54,18 @@ function completeOnClick() {
         url: "/Objective/completeObjective",
         data: { id: parseInt(this.getAttribute("data-objective-id")) },
         beforeSend: function () {
-            loadingSection();
+            loadingAnim();
+            hideShowTable();
         },
         success: function (data) {
             getTable();
         },
         error: function (error) {
-            console.log(error)
+            console.log("Not Nice")
+        },
+        complete: function () {
+            loadingAnim();
+            hideShowTable();
         }
     });
 }
@@ -59,32 +81,18 @@ function deletePermanently() {
         url: "/Objective/Delete",
         data: { id: parseInt($("#reuseable-modal").data("id")) },
         beforeSend: function () {
-            loadingSection();
+            loadingAnim();
+            hideShowTable();
         },
         success: function (data) {
             getTable();
         },
         error: function () {
             console.log("Not Nice")
-        }
-    });
-}
-
-
-function getTable() {
-
-    $.ajax({
-        url: "/Objective/LoadTableRows",
-        data: { input: $("#table-search-box").val().trim() },
-        success: function (data) {
-            if (!$("#loader").hasClass("hide")) {
-                loadingSection();
-            }
-            $("#table-container").html(data);
-            completeDeleteOnclicks();
         },
-        error: function (error) {
-            console.log(error);
+        complete: function () {
+            loadingAnim();
+            hideShowTable();
         }
     });
 }
@@ -92,24 +100,49 @@ function getTable() {
 function completeDeleteOnclicks() {
     //$(document).on("click", .classname,function () { completeOnClick() })
     //$(document).on("click", .classname,function () { deleteButtonOnClick() })
-
     $(".complete-button").on("click", completeOnClick);
     $(".delete-button").on("click", deleteButtonOnClick);
-    $(".edit-button").on("click", loadingSection);
-
+    $(".edit-button").on("click", loadingAnim, hideShowTable);
 }
+
+/*
+function completeDeleteOnclicks() {
+    $(document).on("click", ".complete-button", function () { completeOnClick() });
+    $(document).on("click", ".delete-button", function () { deleteButtonOnClick() });
+    $(document).on("click", ".edit-button", function () {
+        loadingAnim();
+        hideShowTable();
+    });
+    //$(".complete-button").on("click", completeOnClick);
+    //$(".delete-button").on("click", deleteButtonOnClick);
+    //$(".edit-button").on("click", loadingAnim, hideShowTable);
+}
+*/
 
 function toggleModal() {
     $("#reuseable-modal").toggleClass("hide");
 }
 
-function closeModal() {
-    localStorage.removeItem("itemToDelete");
-    toggleModal();
+function getTable() {
+    if ($("#table-search-box").val() == "" || $("#table-search-box").val().trim() != "") {
+        $.ajax({
+            url: "/Objective/LoadTableRows",
+            data: { input: $("#table-search-box").val().trim() },
+            success: function (data) {
+                $("#table-container").html(data);
+                completeDeleteOnclicks();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
 }
 
-function loadingSection() {
+function loadingAnim() {
     $("#loader").toggleClass("hide");
+}
+
+function hideShowTable() {
     $(".container").toggleClass("blur-table");
 }
-

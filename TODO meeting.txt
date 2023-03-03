@@ -379,18 +379,18 @@ funtion to hide modal //
 fix onblur for create new //
 valitation in objective.cs
 
-input type text area
+input type text area //
 push with each solution to these changes
 
 ctrl+k+d
 ctrl+k+e
 
 findAsync without the FromResult //
-set query equal to from
-to list async
-await query to list
+set query equal to from //
+to list async //
+await query to list //
 
-addnew fix
+addnew fix //
 ok() return default ok //
 delete objective id will never be null //
 z index for loading
@@ -425,4 +425,24 @@ trycatch
 not found page //
 rename
 
+
+
+Trim String For Search // 
+abstracting hidding and showing the table in different functions //
+so the gettable does not hide and show the loading screen //
+validations //
+trycatch
+rename //
 try catches added but make sure the result of them is correct
+stop loading in error //
+onclicks
+addObjective fail fast //
+Make Complete not a try catch //
+breakpoints
+addEdit if id is equal to zero just throw it away //
+
+Format //
+White Space //
+rename //
+
+instead of margin right do padding of the header/ or margin all sides

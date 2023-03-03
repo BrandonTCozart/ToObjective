@@ -1,51 +1,50 @@
-﻿
-@model IEnumerable<Objective>
+﻿@model IEnumerable<Objective>
 @{
     //ViewData["Title"] = "Index";
 }
 
 <table id="to-do-table">
-                <thead>
-                    <tr>
-                        <th>Title</th> 
-                        <th>Description</th>
-                        <th>Complete By</th>
-                        <th id="button-column"> Action </th>
-                    </tr>
-                </thead>
-                <tbody id="to-do-table-tbody">
-                    @foreach (var obj in Model)
-                    {
-                        <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
-                            <td id="title-column" onclick="location.href='@Url.Action("Details", "Objective",new {id = obj.Id} )'">
-                                @obj.Title
-                            </td>
-                            <td id="description-column">
-                                <p>@obj.Description</p>
-                            </td>
-                            <td>
-                                @obj.CompleteByDate
-                            </td>
-                            @if (obj.CompletedDate != null)
-                            {
-                                <td>
-                                    <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
-                                    <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                                    <button class="edit-button" data-objective-id=@obj.Id disabled>✎</button>
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    <button class="complete-button" data-objective-id="@obj.Id">✔</button>
-                                    <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                                    <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("AddEdit", "Objective", new {id = obj.Id})'">✎</button>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Complete By</th>
+            <th id="button-column"> Action </th>
+        </tr>
+    </thead>
+    <tbody id="to-do-table-tbody">
+        @foreach (var obj in Model)
+        {
+            <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
+                <td id="title-column" onclick="location.href='@Url.Action("Details", "Objective",new {id = obj.Id} )'">
+                    @obj.Title
+                </td>
+                <td id="description-column">
+                    <p>@obj.Description</p>
+                </td>
+                <td>
+                    @obj.CompleteByDate
+                </td>
+                @if (obj.CompletedDate != null)
+                {
+                    <td>
+                        <button class="complete-button" data-objective-id=@obj.Id disabled>✔</button>
+                        <button class="delete-button" data-objective-id=@obj.Id>✖</button>
+                        <button class="edit-button" data-objective-id=@obj.Id disabled>✎</button>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <button class="complete-button" data-objective-id="@obj.Id">✔</button>
+                        <button class="delete-button" data-objective-id=@obj.Id>✖</button>
+                        <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("AddEdit", "Objective", new {id = obj.Id})'">✎</button>
 
-                                </td>
-                            }
+                    </td>
+                }
 
-                        </tr>
-                    }
-                    </tbody>
-            </table>
+            </tr>
+        }
+    </tbody>
+</table>
 

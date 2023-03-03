@@ -3,25 +3,25 @@ using ToObjective.Models;
 
 namespace ToObjective.Data;
 
-public class ObjectiveDbContext :DbContext
+public class ObjectiveDbContext : DbContext
 {
-	public ObjectiveDbContext(DbContextOptions<ObjectiveDbContext> options) : base(options)
-	{
-	}
+    public ObjectiveDbContext(DbContextOptions<ObjectiveDbContext> options) : base(options)
+    {
+    }
 
-    public DbSet<Objective> Objectives { get; set;}
+    public DbSet<Objective> Objectives { get; set; }
 
-	protected override void OnModelCreating(ModelBuilder modelBuilder)
-	{
-		modelBuilder.Entity<Objective>().Property(o => o.Id)
-			.HasColumnName("ID")
-			.IsRequired();
-		modelBuilder.Entity<Objective>().Property(o => o.Title)
-			.HasColumnName("Title")
-			.IsRequired();
-		modelBuilder.Entity<Objective>().Property(o => o.Description)
-			.HasColumnName("Description")
-			.HasDefaultValue("No Description");
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Objective>().Property(o => o.Id)
+            .HasColumnName("ID")
+            .IsRequired();
+        modelBuilder.Entity<Objective>().Property(o => o.Title)
+            .HasColumnName("Title")
+            .IsRequired();
+        modelBuilder.Entity<Objective>().Property(o => o.Description)
+            .HasColumnName("Description")
+            .HasDefaultValue("No Description");
         modelBuilder.Entity<Objective>().Property(o => o.CompleteByDate)
             .HasColumnName("CompleteByDate")
             .HasDefaultValue(DateTime.Now)
@@ -38,7 +38,6 @@ public class ObjectiveDbContext :DbContext
             .HasColumnName("CompletedDate")
             .HasDefaultValue(DateTime.Now);
     }
-
 }
 
 

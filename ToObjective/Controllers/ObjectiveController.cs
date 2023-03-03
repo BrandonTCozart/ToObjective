@@ -43,10 +43,6 @@ namespace ToObjective.Controllers
 
         public async Task<IActionResult> AddEdit(int id)
         {
-            if (await _dataAccess.GetObjectiveById(id) == null)
-            {
-                return View();
-            }
             var objective = await _dataAccess.GetObjectiveById(id);
             return View(objective);
         }
@@ -58,12 +54,10 @@ namespace ToObjective.Controllers
             return RedirectToAction("Index");
         }
 
-
-
         [HttpPost]
-        public IActionResult EditObjective(Objective obj)
+        public async Task<RedirectToActionResult> EditObjective(Objective obj)
         {
-            _dataAccess.EditObjectives(obj);
+            await _dataAccess.EditObjectives(obj);
             return RedirectToAction("Index");
         }
 
@@ -78,8 +72,7 @@ namespace ToObjective.Controllers
         public async Task<object> CompleteObjective(int id)
         {
             await _dataAccess.CompleteObjective(id);
-            var objective = await _dataAccess.GetByTitleDescription();
-            return null;
+            return Ok();
         }
     }
 }
