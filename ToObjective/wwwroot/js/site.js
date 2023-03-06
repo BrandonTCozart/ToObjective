@@ -3,7 +3,7 @@
 // Write your JavaScript code.
 
 $(document).ready(function () {
-    completeDeleteOnclicks();
+    completeDeleteEditOnclicks();
 
     $("#title-input-box").on("blur", function () {
         this.value = this.value.trim();
@@ -27,13 +27,13 @@ $(document).ready(function () {
 
 
     $("#modal-submit-button").on("click", function () {
-        deletePermanently();
+        deleteRequest();
         toggleModal();
     });
 
     $("#edit-button").on("click", function () {
         if ($("#title-input-box").val() && $("#complete-by-input-box").val()) {
-            loadingAnim();
+            loadingAnimation();
             hideShowTable();
             $("#create-button").hide();
         }
@@ -41,30 +41,31 @@ $(document).ready(function () {
 
     $("#create-button").on("click", function () {
         if ($("#title-input-box").val() && $("#complete-by-input-box").val()) {
-            loadingAnim();
+            loadingAnimation();
             hideShowTable();
             $("#create-button").hide();
         }
     });
 });
 
-function completeOnClick(element) {
+function completeRequest(element) {
     $.ajax({
         type: "PUT",
         url: "/Objective/completeObjective",
         data: { id: parseInt(element.getAttribute("data-objective-id")) },
         beforeSend: function () {
-            loadingAnim();
+            loadingAnimation();
             hideShowTable();
         },
         success: function (data) {
             getTable();
         },
         error: function (error) {
-            console.log("Not Nice")
+            // try again toast message
+            console.log("Not Nice");
         },
         complete: function () {
-            loadingAnim();
+            loadingAnimation();
             hideShowTable();
         }
     });
@@ -75,13 +76,13 @@ function deleteButtonOnClick(element) {
     $("#reuseable-modal").data("id", element.getAttribute("data-objective-id"));
 }
 
-function deletePermanently() {
+function deleteRequest() {
     $.ajax({
         type: "DELETE",
         url: "/Objective/Delete",
         data: { id: parseInt($("#reuseable-modal").data("id")) },
         beforeSend: function () {
-            loadingAnim();
+            loadingAnimation();
             hideShowTable();
         },
         success: function (data) {
@@ -91,16 +92,16 @@ function deletePermanently() {
             console.log("Not Nice")
         },
         complete: function () {
-            loadingAnim();
+            loadingAnimation();
             hideShowTable();
         }
     });
 }
 
-function completeDeleteOnclicks() {
-    $(document).on("click", ".complete-button",function () { completeOnClick(this) })
+function completeDeleteEditOnclicks() {
+    $(document).on("click", ".complete-button",function () { completeRequest(this) })
     $(document).on("click", ".delete-button", function () { deleteButtonOnClick(this) })
-    $(document).on("click", ".edit-button", function () { loadingAnim(), hideShowTable() })
+    $(document).on("click", ".edit-button", function () { loadingAnimation(), hideShowTable() })
 }
 
 function toggleModal() {
@@ -122,7 +123,7 @@ function getTable() {
     }
 }
 
-function loadingAnim() {
+function loadingAnimation() {
     $("#loader").toggleClass("hide");
 }
 

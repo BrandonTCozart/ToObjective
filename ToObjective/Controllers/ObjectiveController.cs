@@ -15,8 +15,15 @@ namespace ToObjective.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var objectives = await _dataAccess.GetByTitleDescription();
-            return View(objectives);
+            try
+            {
+                var objectives = await _dataAccess.GetByTitleDescription();
+                return View(objectives);
+            }catch(Exception ex)
+            {
+                return View();
+            }
+            
         }
 
         public IActionResult NotFound()
@@ -34,45 +41,79 @@ namespace ToObjective.Controllers
             return View(objective);
         }
 
+
         [HttpGet]
         public async Task<IActionResult> LoadTableRows(string input)
         {
-            var objective = await _dataAccess.GetByTitleDescription(input);
-            return PartialView("_TableToDo", objective);
+            try
+            {
+                var objective = await _dataAccess.GetByTitleDescription(input);
+                return PartialView("_TableToDo", objective);
+
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        public async Task<IActionResult> AddEdit(int id)
+        public async Task<IActionResult> AddEditObjective(int id)
         {
-            var objective = await _dataAccess.GetObjectiveById(id);
-            return View(objective);
+                var objective = await _dataAccess.GetObjectiveById(id);
+                return View(objective);
         }
 
         [HttpPost]
-        public async Task<IActionResult> IndexObjective(Objective obj)
+        public async Task<IActionResult> AddObjective(Objective obj)
         {
-            await _dataAccess.AddObjective(obj);
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                await _dataAccess.AddObjective(obj);
+                return RedirectToAction("Index");
+            }catch(Exception ex) { 
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
-        public async Task<RedirectToActionResult> EditObjective(Objective obj)
+        public async Task<IActionResult> EditObjective(Objective obj)
         {
-            await _dataAccess.EditObjectives(obj);
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                await _dataAccess.EditObjectives(obj);
+                return RedirectToAction("Index");
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete]
-        public async Task<object> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await _dataAccess.DeleteObjective(id);
             return Ok();
         }
 
         [HttpPut]
-        public async Task<object> CompleteObjective(int id)
+        public async Task<IActionResult> CompleteObjective(int id)
         {
-            await _dataAccess.CompleteObjective(id);
-            return Ok();
+            try
+            {
+                await _dataAccess.CompleteObjective(id);
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

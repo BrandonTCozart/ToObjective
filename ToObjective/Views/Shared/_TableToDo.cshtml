@@ -38,7 +38,7 @@
                     <td>
                         <button class="complete-button" data-objective-id="@obj.Id">✔</button>
                         <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                        <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("AddEdit", "Objective", new {id = obj.Id})'">✎</button>
+                        <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("AddEditObjective", "Objective", new {id = obj.Id})'">✎</button>
 
                     </td>
                 }

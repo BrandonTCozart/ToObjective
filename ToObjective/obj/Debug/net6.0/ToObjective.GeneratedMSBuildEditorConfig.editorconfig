@@ -16,8 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\bcozart\VS\ToObjective\ToObjective
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/AddEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXEFkZEVkaXQuY3NodG1s
+[C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/AddEditObjective.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXEFkZEVkaXRPYmplY3RpdmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bcozart/VS/ToObjective/ToObjective/Views/Objective/Details.cshtml]

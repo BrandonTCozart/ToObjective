@@ -420,7 +420,7 @@ await and remove .Result //
 get rid od getObjectives async and use getTitleDescription method in Dal //
 
 validations 
-	- max length of title
+	- max length of title //
 trycatch
 not found page //
 rename
@@ -435,7 +435,7 @@ trycatch
 rename //
 try catches added but make sure the result of them is correct
 stop loading in error //
-onclicks
+onclicks //
 addObjective fail fast //
 Make Complete not a try catch //
 breakpoints
@@ -446,3 +446,13 @@ White Space //
 rename //
 
 instead of margin right do padding of the header/ or margin all sides
+
+https://learn.microsoft.com/en-us/dotnet/api/system.web.http.apicontroller.badrequest?view=aspnet-webapi-5.2 
+
+wrapping up the mvc section of the training program, 
+looking to get through the angular section starting this week.
+
+commnication between view and controller, 
+auto generating views with controller
+
+scrum

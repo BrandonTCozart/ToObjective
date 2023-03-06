@@ -20,20 +20,33 @@ namespace ToObjective.Data
             {
                 return;
             }
-            _db.Objectives.Add(obj);
-            await _db.SaveChangesAsync();
+            try
+            {
+                _db.Objectives.Add(obj);
+                await _db.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task CompleteObjective(int id)
         {
-            var result = await _db.Objectives.FindAsync(id);
-            if (result == null)
+            try
             {
-                return;
+                var result = await _db.Objectives.FindAsync(id);
+                if (result == null)
+                {
+                    return;
+                }
+                result.CompletedDate = DateTime.Now;
+                result.UpdatedDate = DateTime.Now;
+                await _db.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
-            result.CompletedDate = DateTime.Now;
-            result.UpdatedDate = DateTime.Now;
-            await _db.SaveChangesAsync();
+            
         }
 
         public async Task DeleteObjective(int id)
@@ -49,22 +62,36 @@ namespace ToObjective.Data
 
         public async Task<Objective> GetObjectiveById(int id)
         {
+
             return await _db.Objectives.FindAsync(id);
         }
 
         public async Task EditObjectives(Objective obj)
         {
-            _db.Update(obj);
-            await _db.SaveChangesAsync();
+            try
+            {
+                _db.Update(obj);
+                await _db.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<IEnumerable<Objective>> GetByTitleDescription(string searchBoxString = null)
         {
-            var query = from x in _db.Objectives
-                        where searchBoxString == null || x.Title.Contains(searchBoxString) || x.Description.Contains(searchBoxString)
-                        orderby x.CompletedDate ascending, x.CompleteByDate ascending
-                        select x;
-            return await query.ToListAsync();
+            try
+            {
+                var query = from x in _db.Objectives
+                            where searchBoxString == null || x.Title.Contains(searchBoxString) || x.Description.Contains(searchBoxString)
+                            orderby x.CompletedDate ascending, x.CompleteByDate ascending
+                            select x;
+                return await query.ToListAsync();
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
     }
 }

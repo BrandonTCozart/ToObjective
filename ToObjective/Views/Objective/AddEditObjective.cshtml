@@ -1,7 +1,7 @@
 ﻿@model ToObjective.Models.Objective
 
 @{
-    ViewData["Title"] = "AddEdit";
+    ViewData["Title"] = "AddEditObjective";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,7 +15,7 @@
             <h2>Create Task</h2>
         </div>
         <div>
-            <form id="create-form" method="post" action="@Url.Action("IndexObjective", "Objective")">
+            <form id="create-form" method="post" action="@Url.Action("AddObjective", "Objective")">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div>
                     <label asp-for="Title"></label>
