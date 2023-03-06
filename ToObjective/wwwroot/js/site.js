@@ -48,11 +48,11 @@ $(document).ready(function () {
     });
 });
 
-function completeOnClick() {
+function completeOnClick(element) {
     $.ajax({
         type: "PUT",
         url: "/Objective/completeObjective",
-        data: { id: parseInt(this.getAttribute("data-objective-id")) },
+        data: { id: parseInt(element.getAttribute("data-objective-id")) },
         beforeSend: function () {
             loadingAnim();
             hideShowTable();
@@ -70,9 +70,9 @@ function completeOnClick() {
     });
 }
 
-function deleteButtonOnClick() {
+function deleteButtonOnClick(element) {
     toggleModal();
-    $("#reuseable-modal").data("id", this.getAttribute("data-objective-id"));
+    $("#reuseable-modal").data("id", element.getAttribute("data-objective-id"));
 }
 
 function deletePermanently() {
@@ -98,26 +98,10 @@ function deletePermanently() {
 }
 
 function completeDeleteOnclicks() {
-    //$(document).on("click", .classname,function () { completeOnClick() })
-    //$(document).on("click", .classname,function () { deleteButtonOnClick() })
-    $(".complete-button").on("click", completeOnClick);
-    $(".delete-button").on("click", deleteButtonOnClick);
-    $(".edit-button").on("click", loadingAnim, hideShowTable);
+    $(document).on("click", ".complete-button",function () { completeOnClick(this) })
+    $(document).on("click", ".delete-button", function () { deleteButtonOnClick(this) })
+    $(document).on("click", ".edit-button", function () { loadingAnim(), hideShowTable() })
 }
-
-/*
-function completeDeleteOnclicks() {
-    $(document).on("click", ".complete-button", function () { completeOnClick() });
-    $(document).on("click", ".delete-button", function () { deleteButtonOnClick() });
-    $(document).on("click", ".edit-button", function () {
-        loadingAnim();
-        hideShowTable();
-    });
-    //$(".complete-button").on("click", completeOnClick);
-    //$(".delete-button").on("click", deleteButtonOnClick);
-    //$(".edit-button").on("click", loadingAnim, hideShowTable);
-}
-*/
 
 function toggleModal() {
     $("#reuseable-modal").toggleClass("hide");
@@ -130,7 +114,6 @@ function getTable() {
             data: { input: $("#table-search-box").val().trim() },
             success: function (data) {
                 $("#table-container").html(data);
-                completeDeleteOnclicks();
             },
             error: function (error) {
                 console.log(error);
