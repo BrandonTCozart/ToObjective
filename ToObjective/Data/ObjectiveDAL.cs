@@ -40,7 +40,7 @@ namespace ToObjective.Data
                     return;
                 }
                 result.CompletedDate = DateTime.Now;
-                result.UpdatedDate = DateTime.Now;
+                result.UpdatedDate = (DateTime)result.CompletedDate;
                 await _db.SaveChangesAsync();
             }catch(Exception ex)
             {
@@ -67,7 +67,6 @@ namespace ToObjective.Data
 
         public async Task<Objective> GetObjectiveById(int id)
         {
-
             return await _db.Objectives.FindAsync(id);
         }
 

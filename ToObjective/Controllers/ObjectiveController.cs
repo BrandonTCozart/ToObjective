@@ -17,9 +17,9 @@ namespace ToObjective.Controllers
         {
             try
             {
-                var objectives = await _dataAccess.GetByTitleDescription();
-                return View(objectives);
-            }catch(Exception ex)
+                return View(await _dataAccess.GetByTitleDescription());
+            }
+            catch (Exception ex)
             {
                 return View();
             }
@@ -45,10 +45,10 @@ namespace ToObjective.Controllers
         {
             try
             {
-                var objective = await _dataAccess.GetByTitleDescription(input);
-                return PartialView("_TableToDo", objective);
+                return PartialView("_TableToDo", await _dataAccess.GetByTitleDescription(input));
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -56,23 +56,19 @@ namespace ToObjective.Controllers
 
         public async Task<IActionResult> AddEditObjective(int id)
         {
-                var objective = await _dataAccess.GetObjectiveById(id);
-                return View(objective);
+            return View(await _dataAccess.GetObjectiveById(id));
         }
 
         [HttpPost]
         public async Task<IActionResult> AddObjective(Objective obj)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
             try
             {
                 await _dataAccess.AddObjective(obj);
                 return RedirectToAction("Index");
-            }catch(Exception ex) { 
+            }
+            catch (Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }
@@ -80,15 +76,12 @@ namespace ToObjective.Controllers
         [HttpPost]
         public async Task<IActionResult> EditObjective(Objective obj)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
             try
             {
                 await _dataAccess.EditObjectives(obj);
                 return RedirectToAction("Index");
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -97,10 +90,12 @@ namespace ToObjective.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            try {
+            try
+            {
                 await _dataAccess.DeleteObjective(id);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -113,7 +108,8 @@ namespace ToObjective.Controllers
             {
                 await _dataAccess.CompleteObjective(id);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

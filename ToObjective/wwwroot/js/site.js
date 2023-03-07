@@ -61,7 +61,6 @@ function completeRequest(element) {
             getTable();
         },
         error: function (error) {
-            // try again toast message
             console.log("Not Nice");
             errorSlide("Error completing task, try again");
         },
@@ -101,7 +100,7 @@ function deleteRequest() {
 }
 
 function completeDeleteEditOnclicks() {
-    $(document).on("click", ".complete-button",function () { completeRequest(this) })
+    $(document).on("click", ".complete-button", function () { completeRequest(this) })
     $(document).on("click", ".delete-button", function () { deleteButtonOnClick(this) })
     $(document).on("click", ".edit-button", function () { loadingAnimation(), hideShowTable() })
 }
@@ -130,7 +129,6 @@ function getTable() {
 function loadingAnimation() {
     $("#loader").toggleClass("hide");
 }
-
 
 function errorSlide(errorText = "") {
     $("#error-container").slideToggle(1000);
