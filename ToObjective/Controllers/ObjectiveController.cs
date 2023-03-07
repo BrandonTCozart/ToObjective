@@ -23,7 +23,6 @@ namespace ToObjective.Controllers
             {
                 return View();
             }
-            
         }
 
         public IActionResult NotFound()
@@ -40,7 +39,6 @@ namespace ToObjective.Controllers
             }
             return View(objective);
         }
-
 
         [HttpGet]
         public async Task<IActionResult> LoadTableRows(string input)
@@ -99,8 +97,13 @@ namespace ToObjective.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            await _dataAccess.DeleteObjective(id);
-            return Ok();
+            try {
+                await _dataAccess.DeleteObjective(id);
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut]

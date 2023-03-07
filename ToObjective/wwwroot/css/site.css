@@ -274,4 +274,17 @@ dd{
     text-overflow: ellipsis;
     overflow: hidden;
 }
+#error-container {
+    width: 100%;
+    text-align: center;
+    padding: 0px 5px;
+    display: none;
+}
 
+#error-message {
+    border-width: 1px;
+    border-style: solid;
+    padding: 0px 2px;
+    display: inline;
+    background-color: #f97979;
+}

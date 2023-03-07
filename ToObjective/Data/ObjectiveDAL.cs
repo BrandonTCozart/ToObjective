@@ -56,8 +56,13 @@ namespace ToObjective.Data
             {
                 return;
             }
-            _db.Objectives.Remove(obj);
-            await _db.SaveChangesAsync();
+            try
+            {
+                _db.Objectives.Remove(obj);
+                await _db.SaveChangesAsync();
+            }catch (Exception ex) { 
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<Objective> GetObjectiveById(int id)

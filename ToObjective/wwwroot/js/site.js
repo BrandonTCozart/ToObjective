@@ -63,6 +63,7 @@ function completeRequest(element) {
         error: function (error) {
             // try again toast message
             console.log("Not Nice");
+            errorSlide("Error completing task, try again");
         },
         complete: function () {
             loadingAnimation();
@@ -90,6 +91,7 @@ function deleteRequest() {
         },
         error: function () {
             console.log("Not Nice")
+            errorSlide("Error deleting task, try again");
         },
         complete: function () {
             loadingAnimation();
@@ -118,6 +120,8 @@ function getTable() {
             },
             error: function (error) {
                 console.log(error);
+                errorSlide("Error try again");
+
             }
         });
     }
@@ -125,6 +129,15 @@ function getTable() {
 
 function loadingAnimation() {
     $("#loader").toggleClass("hide");
+}
+
+
+function errorSlide(errorText = "") {
+    $("#error-container").slideToggle(1000);
+    $("#error-message").text(errorText);
+    if (errorText != "") {
+        setTimeout(function () { $("#error-container").hide() }, 3000);
+    }
 }
 
 function hideShowTable() {
