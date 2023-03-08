@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ToObjective.Interfaces;
 using ToObjective.Models;
-
 namespace ToObjective.Controllers
 {
     public class ObjectiveController : Controller

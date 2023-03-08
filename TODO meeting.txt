@@ -448,3 +448,13 @@ rename //
 instead of margin right do padding of the header/ or margin all sides //
 
 https://learn.microsoft.com/en-us/dotnet/api/system.web.http.apicontroller.badrequest?view=aspnet-webapi-5.2 
+
+https://learning.oreilly.com/videos/learn-asp-net-mvc/9781801075565/ 
+
+https://learning.oreilly.com/library/view/pro-asp-net-mvc/9781430265290/9781430265290_Ch25.xhtml#Sec3 
+
+"Action Method"
+
+https://www.youtube.com/watch?v=2bsRQIhtTxs 
+
+
