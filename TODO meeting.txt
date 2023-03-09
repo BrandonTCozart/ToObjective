@@ -457,4 +457,21 @@ https://learning.oreilly.com/library/view/pro-asp-net-mvc/9781430265290/97814302
 
 https://www.youtube.com/watch?v=2bsRQIhtTxs 
 
+<-------------------------------->
 
+anchor tag so you cna right click and open details in new page / home aswell
+Open two details pages, delete the detail on index, then create a new item with that id.
+complete item, also have the edit open for that item. when you edit after completing the item will no longer be complete. 
+-- the item should be unchangable after it has been complete
+empty constructor 
+
+dont duplicate add edit
+justify
+bigger description box
+align create and edit
+complete to save
+leave modal open when error
+error slide
+name changes 
+set data of modal before opening it
+completeObjective or deleteObjective
