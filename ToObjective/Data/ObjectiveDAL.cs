@@ -14,21 +14,41 @@ namespace ToObjective.Data
             _db = db;
         }
 
-        public async Task AddObjective(Objective obj)
+        public async Task CreateOrChangeObjective(Objective obj)
         {
-            if (obj == null)
+            
+            if (!await isComplete(obj))
             {
-                return;
-            }
-            try
-            {
-                _db.Objectives.Add(obj);
-                await _db.SaveChangesAsync();
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
+                try
+                {
+                    _db.Update(obj);
+                    await _db.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
             }
         }
+        
+
+        public async Task<bool> isComplete(Objective obj)
+        {
+            var objec = await _db.Objectives.FindAsync(obj.Id);
+            if (objec != null)
+            {
+                if (objec.CompletedDate != null)
+                {
+                    _db.Entry(objec).State = EntityState.Detached;
+                    return true;
+                }
+                _db.Entry(objec).State = EntityState.Detached;
+                return false;
+            }
+            return false;
+        }
+
+        
 
         public async Task CompleteObjective(int id)
         {
@@ -68,18 +88,6 @@ namespace ToObjective.Data
         public async Task<Objective> GetObjectiveById(int id)
         {
             return await _db.Objectives.FindAsync(id);
-        }
-
-        public async Task EditObjectives(Objective obj)
-        {
-            try
-            {
-                _db.Update(obj);
-                await _db.SaveChangesAsync();
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
 
         public async Task<IEnumerable<Objective>> GetByTitleDescription(string searchBoxString = null)

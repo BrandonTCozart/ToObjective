@@ -59,25 +59,14 @@ namespace ToObjective.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddObjective(Objective obj)
+        public async Task<IActionResult> AddOrEditObjective(Objective obj)
         {
             try
             {
-                await _dataAccess.AddObjective(obj);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> EditObjective(Objective obj)
-        {
-            try
-            {
-                await _dataAccess.EditObjectives(obj);
+                if (obj.CompletedDate ==  null)
+                {
+                    await _dataAccess.CreateOrChangeObjective(obj);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

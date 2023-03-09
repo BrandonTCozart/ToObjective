@@ -16,9 +16,9 @@
         @foreach (var obj in Model)
         {
             <tr class="@(obj.CompletedDate!=null ? "row-color" : "")">
-                <td id="title-column" onclick="location.href='@Url.Action("Details", "Objective",new {id = obj.Id} )'">
-                    @obj.Title
-                </td>
+                    <td id="title-column" >
+                    <a href='@Url.Action("Details", "Objective",new {id = obj.Id} )'>@obj.Title</a>
+                    </td>
                 <td id="description-column">
                     <p>@obj.Description</p>
                 </td>
@@ -38,7 +38,7 @@
                     <td>
                         <button class="complete-button" data-objective-id="@obj.Id">✔</button>
                         <button class="delete-button" data-objective-id=@obj.Id>✖</button>
-                        <button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id onclick="location.href='@Url.Action("AddEditObjective", "Objective", new {id = obj.Id})'">✎</button>
+                        <a href='@Url.Action("AddEditObjective", "Objective", new {id = obj.Id})'><button class="edit-button" id="edit-button-id" data-objective-id=@obj.Id>✎</button></a>
                     </td>
                 }
 

@@ -27,8 +27,8 @@ $(document).ready(function () {
 
 
     $("#modal-submit-button").on("click", function () {
-        deleteRequest();
-        toggleModal();
+        deleteObjective();
+        //toggleModal();
     });
 
     $("#edit-button").on("click", function () {
@@ -48,7 +48,7 @@ $(document).ready(function () {
     });
 });
 
-function completeRequest(element) {
+function completeObjective(element) {
     $.ajax({
         type: "PUT",
         url: "/Objective/completeObjective",
@@ -72,11 +72,11 @@ function completeRequest(element) {
 }
 
 function deleteButtonOnClick(element) {
-    toggleModal();
     $("#reuseable-modal").data("id", element.getAttribute("data-objective-id"));
+    toggleModal();
 }
 
-function deleteRequest() {
+function deleteObjective() {
     $.ajax({
         type: "DELETE",
         url: "/Objective/Delete",
@@ -87,6 +87,7 @@ function deleteRequest() {
         },
         success: function (data) {
             getTable();
+            toggleModal();
         },
         error: function () {
             console.log("Not Nice")
@@ -100,7 +101,7 @@ function deleteRequest() {
 }
 
 function completeDeleteEditOnclicks() {
-    $(document).on("click", ".complete-button", function () { completeRequest(this) })
+    $(document).on("click", ".complete-button", function () { completeObjective(this) })
     $(document).on("click", ".delete-button", function () { deleteButtonOnClick(this) })
     $(document).on("click", ".edit-button", function () { loadingAnimation(), hideShowTable() })
 }
@@ -130,12 +131,10 @@ function loadingAnimation() {
     $("#loader").toggleClass("hide");
 }
 
-function errorSlide(errorText = "") {
+function errorSlide(errorText) {
     $("#error-container").slideToggle(1000);
     $("#error-message").text(errorText);
-    if (errorText != "") {
-        setTimeout(function () { $("#error-container").hide() }, 3000);
-    }
+    setTimeout(function () { $("#error-container").hide() }, 3000);
 }
 
 function hideShowTable() {

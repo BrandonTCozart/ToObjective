@@ -7,8 +7,7 @@ namespace ToObjective.Interfaces
         Task<Objective> GetObjectiveById(int id);
         Task DeleteObjective(int id);
         Task CompleteObjective(int id);
-        Task AddObjective(Objective obj);
-        Task EditObjectives(Objective obj);
+        Task CreateOrChangeObjective(Objective obj);
         Task<IEnumerable<Objective>> GetByTitleDescription(string searchBoxString = null);
     }
 }
