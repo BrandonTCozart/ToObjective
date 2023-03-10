@@ -451,6 +451,9 @@ https://learn.microsoft.com/en-us/dotnet/api/system.web.http.apicontroller.badre
 
 https://learning.oreilly.com/videos/learn-asp-net-mvc/9781801075565/ 
 
+                _db.Entry(objec).State = EntityState.Detached;
+
+
 https://learning.oreilly.com/library/view/pro-asp-net-mvc/9781430265290/9781430265290_Ch25.xhtml#Sec3 
 
 "Action Method"
@@ -460,7 +463,7 @@ https://www.youtube.com/watch?v=2bsRQIhtTxs
 <-------------------------------->
 
 
-
+<--------------------------------------------------------------------->
 anchor tag so you cna right click and open details in new page / home aswell //
 Open two details pages, delete the detail on index, then create a new item with that id.
 complete item, also have the edit open for that item. when you edit after completing the item will no longer be complete. //
@@ -470,8 +473,8 @@ empty constructor //
 
 dont duplicate add edit //
 justify
-bigger description box
-align create and edit
+bigger description box //
+align create and edit //
 complete to save
 leave modal open when error //
 error slide //
@@ -482,7 +485,8 @@ completeObjective or deleteObjective //
 https://stackoverflow.com/questions/36856073/the-instance-of-entity-type-cannot-be-tracked-because-another-instance-of-this-t 
 
 Optimistic Concurrency
-delete does not work
+
+delete does not work //
 make edit tab for an object, delete the obnect in main tab, then edit the objective and the result will be exception?
 
 @section Scripts {
@@ -500,3 +504,13 @@ Empty constructor.
 be abstract or value types and must have a parameterless constructor. 
 Record types must have a single primary constructor. Alternatively, give 
 the 'obj' parameter a non-null default value."
+
+dto
+cancel button  //
+
+<------------------------------------------------>
+
+Make Error messages red
+under input
+spaces in createbydate
+findnotracking

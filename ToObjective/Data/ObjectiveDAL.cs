@@ -16,39 +16,39 @@ namespace ToObjective.Data
 
         public async Task CreateOrChangeObjective(Objective obj)
         {
-            
-            if (!await isComplete(obj))
+            if (await _db.Objectives.FindAsync(obj.Id) != null)
             {
-                try
+                if (!await IsComplete(obj))
                 {
-                    _db.Update(obj);
-                    await _db.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
+                    try
+                    {
+                        _db.Update(obj);
+                        await _db.SaveChangesAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
                 }
             }
+            else
+            {
+                await _db.AddAsync(new Objective(obj.Title, obj.Description, obj.CompleteByDate));
+                await _db.SaveChangesAsync();
+            }
         }
-        
 
-        public async Task<bool> isComplete(Objective obj)
+        public async Task<bool> IsComplete(Objective obj)
         {
             var objec = await _db.Objectives.FindAsync(obj.Id);
-            if (objec != null)
+            if (objec != null && objec.CompletedDate != null)
             {
-                if (objec.CompletedDate != null)
-                {
-                    _db.Entry(objec).State = EntityState.Detached;
-                    return true;
-                }
                 _db.Entry(objec).State = EntityState.Detached;
-                return false;
+                return true;
             }
+            _db.Entry(objec).State = EntityState.Detached;
             return false;
         }
-
-        
 
         public async Task CompleteObjective(int id)
         {
@@ -62,11 +62,11 @@ namespace ToObjective.Data
                 result.CompletedDate = DateTime.Now;
                 result.UpdatedDate = (DateTime)result.CompletedDate;
                 await _db.SaveChangesAsync();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            
         }
 
         public async Task DeleteObjective(int id)
@@ -80,7 +80,9 @@ namespace ToObjective.Data
             {
                 _db.Objectives.Remove(obj);
                 await _db.SaveChangesAsync();
-            }catch (Exception ex) { 
+            }
+            catch (Exception ex)
+            {
                 throw new Exception(ex.Message);
             }
         }
@@ -99,11 +101,11 @@ namespace ToObjective.Data
                             orderby x.CompletedDate ascending, x.CompleteByDate ascending
                             select x;
                 return await query.ToListAsync();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            
         }
     }
 }

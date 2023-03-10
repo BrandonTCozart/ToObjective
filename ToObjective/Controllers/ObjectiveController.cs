@@ -45,7 +45,6 @@ namespace ToObjective.Controllers
             try
             {
                 return PartialView("_TableToDo", await _dataAccess.GetByTitleDescription(input));
-
             }
             catch (Exception ex)
             {

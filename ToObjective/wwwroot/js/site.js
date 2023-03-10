@@ -25,10 +25,8 @@ $(document).ready(function () {
 
     $("#modal-cancel-button").add("#modal-close-button").on("click", toggleModal);
 
-
     $("#modal-submit-button").on("click", function () {
         deleteObjective();
-        //toggleModal();
     });
 
     $("#edit-button").on("click", function () {
@@ -121,7 +119,6 @@ function getTable() {
             error: function (error) {
                 console.log(error);
                 errorSlide("Error try again");
-
             }
         });
     }

@@ -6,7 +6,6 @@ body {
     font-family: sans-serif;
 }
 
-
 #header {
     background: #0747a6;
     border-style: solid;
@@ -19,14 +18,17 @@ body {
     height: 50px;
     padding-top: 20px;
 }
-input,button{
-    cursor:pointer;
+
+input, button {
+    cursor: pointer;
     border-style: solid;
     border-width: 1px;
 }
-a{
+
+a {
     color: black;
 }
+
 #Home-button {
     display: inline;
     float: right;
@@ -48,6 +50,11 @@ footer {
     margin-top: 50px;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+#create-edit-container {
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #table-header {
@@ -138,7 +145,6 @@ button {
     border-width: 1px;
 }
 
-
 .hide {
     display: none;
 }
@@ -151,22 +157,37 @@ button {
     background-color: green;
 }
 
-.edit-button {
-}
-
 .delete-button {
     background-color: red;
+}
+
+#form-content {
+    display: grid;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 form {
     border-style: solid;
     border-width: 1px;
-
 }
 
-    form input,textarea {
-        margin: 10px;
-    }
+#buttons-section input {
+    margin-left: 70px;
+}
+
+label {
+    display: block;
+}
+
+form input, textarea {
+    margin: 10px 0px;
+}
+
+textarea {
+    height: 100px;
+    width: 200px
+}
 
 dt {
     font-weight: bold;
@@ -243,8 +264,8 @@ dd {
     position: absolute;
     top: 50%;
     left: 50%;
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
     border-radius: 50%;
     width: 20px;
     height: 20px;
