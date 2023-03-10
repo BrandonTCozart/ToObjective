@@ -465,21 +465,38 @@ anchor tag so you cna right click and open details in new page / home aswell //
 Open two details pages, delete the detail on index, then create a new item with that id.
 complete item, also have the edit open for that item. when you edit after completing the item will no longer be complete. //
 -- the item should be unchangable after it has been complete //
-empty constructor 
+
+empty constructor //
 
 dont duplicate add edit //
 justify
 bigger description box
 align create and edit
 complete to save
-leave modal open when error
-error slide
+leave modal open when error //
+error slide //
 name changes 
-set data of modal before opening it
-completeObjective or deleteObjective
+set data of modal before opening it //
+completeObjective or deleteObjective //
 
 https://stackoverflow.com/questions/36856073/the-instance-of-entity-type-cannot-be-tracked-because-another-instance-of-this-t 
 
 Optimistic Concurrency
 delete does not work
 make edit tab for an object, delete the obnect in main tab, then edit the objective and the result will be exception?
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+Asynchronously generates the jquery validation scripts that it auto generates.
+
+Empty constructor. 
+
+"InvalidOperationException: Could not create an instance of type 
+'ToObjective.Models.Objective'. Model bound complex types must not 
+be abstract or value types and must have a parameterless constructor. 
+Record types must have a single primary constructor. Alternatively, give 
+the 'obj' parameter a non-null default value."
