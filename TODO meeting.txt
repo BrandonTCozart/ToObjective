@@ -514,3 +514,22 @@ Make Error messages red
 under input
 spaces in createbydate
 findnotracking
+
+<---------------------------------->
+Components - holds template, class, metadata(decorators)
+custom selectors
+Dependency injection
+model binding
+
+sharing data between components
+Directives -- lifecycle hooks
+
+{}{}{}{}{}{}
+https://www.youtube.com/watch?v=vmJ5rJaIJFA 
+https://www.youtube.com/watch?v=dtthbiP3SE0 
+
+Table
+Service
+Controller
+Routing
+{}{}{}{}{}{}

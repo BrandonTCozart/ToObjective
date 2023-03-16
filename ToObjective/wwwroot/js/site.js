@@ -48,6 +48,7 @@ $(document).ready(function () {
 
 function completeObjective(element) {
     $.ajax({
+
         type: "PUT",
         url: "/Objective/completeObjective",
         data: { id: parseInt(element.getAttribute("data-objective-id")) },
