@@ -23,6 +23,11 @@ namespace ToObjective.Controllers
                 return View();
             }
         }
+        public async Task<IActionResult> getObjectives()
+        {
+                return View(await _dataAccess.GetByTitleDescription());
+        }
+
 
         public IActionResult NotFound()
         {
