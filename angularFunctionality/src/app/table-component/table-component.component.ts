@@ -11,12 +11,19 @@ import { ServiceService } from '../Services/service.service';
 export class TableComponentComponent implements OnInit {
   constructor(private service: ServiceService) { 
   }
-
+ 
   ngOnInit(): void {
-    this.service.testFunction();
+    const http$ = this.service.getObjectivesTitles();
+    console.log(http$)
+    http$.subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
   }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  data: any[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'}
-  ];
+    // console.log(this.service.getObjectivesTitles())
+    // }
+  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  // data: any[] = [
+  //   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'}
+  // ];
 }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceService {
-  private url: string = '/Objective/getObjectives';
+  private url: string = 'api/ObjectiveController';
   constructor(private http: HttpClient) { }
 
   
